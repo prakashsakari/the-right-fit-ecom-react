@@ -4,7 +4,7 @@ import {
     Category,
     NewArrivals,
     Footer
-  } from "../components/index";
+  } from "../components";
   
   const Home = () => {
     return (
