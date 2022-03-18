@@ -1,3 +1,4 @@
+import {footer} from "../../staticData/footer"
 const Footer = () => {
     return (
       <footer class="footer d-flex direction-column align-center">
@@ -9,42 +10,22 @@ const Footer = () => {
           by Prakash Sakari
         </p>
         <div class="d-flex gap align-center padding-all-16">
-          <a
-            href="https://github.com/prakashsakari/"
+          {footer.map(({imgUrl, alt, link}) => {
+            return (
+              <a
+            href={link}
             class="link"
             target="_blank"
             rel="noreferrer"
           >
             <img
               class="source-image"
-              src="https://therightfit.netlify.app/assets/github-logo.png"
-              alt="GitHub"
+              src={imgUrl}
+              alt={alt}
             />
           </a>
-          <a
-            href="https://twitter.com/prakashsakari"
-            class="link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              class="source-image"
-              src="https://therightfit.netlify.app/assets/twitter.png"
-              alt="Twitter"
-            />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/prakashsakari/"
-            class="link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              class="source-image"
-              src="https://therightfit.netlify.app/assets/linkedin.png"
-              alt="LinkedIn"
-            />
-          </a>
+            )
+          })}
         </div>
       </footer>
     );
