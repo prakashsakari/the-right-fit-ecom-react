@@ -1,0 +1,15 @@
+.product-content {
+    margin-top: 5rem;
+    margin-left: 20rem;
+    padding: 2rem 5rem;
+}
+  
+.card-image-container {
+    width: 100%;
+    height: 240px;
+}
+  
+.card-image {
+    height: 100%;
+}
+  

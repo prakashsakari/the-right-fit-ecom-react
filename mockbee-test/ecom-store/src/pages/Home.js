@@ -8,7 +8,7 @@ import {
   
   const Home = () => {
     return (
-      <div className="home-page">
+      <div className="page">
         <Navbar />
         <Category />
         <Banner />
