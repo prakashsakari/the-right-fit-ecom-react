@@ -1,4 +1,4 @@
-import { latestCollection } from "../../staticData/new-arrivals";
+import { latestCollection } from "../../dB/new-arrivals";
 import { Link } from "react-router-dom";
 const NewArrivals = () => {
   return (
@@ -8,13 +8,13 @@ const NewArrivals = () => {
           return (
             <>
               <Link to="/" class="link">
-                <div class="new-arrival-banner-container d-flex gap shadow">
-                  <img class="new-arrival-img" src={imgUrl} alt="collection" />
-                  <div class="arrival-details d-flex direction-column">
-                    <span class="banner-promo">New Arrivals</span>
-                    <p class="collection-details">
-                      <h3 class="collection-title">Summer Collection</h3>
-                      <small class="about-collection">
+                <div className="new-arrival-banner-container d-flex gap shadow">
+                  <img className="new-arrival-img" src={imgUrl} alt="collection" />
+                  <div className="arrival-details d-flex direction-column">
+                    <span className="banner-promo">New Arrivals</span>
+                    <p className="collection-details">
+                      <h3 className="collection-title">Summer Collection</h3>
+                      <small className="about-collection">
                         Checkout out latest summer collection to keep your feet
                         cool.
                       </small>

@@ -1,7 +1,7 @@
-import {footer} from "../../staticData/footer"
+import {footer} from "../../dB/footer"
 const Footer = () => {
     return (
-      <footer class="footer d-flex direction-column align-center">
+      <footer className="footer d-flex direction-column align-center">
         <p>
           Made with{" "}
           <span role="img" aria-label="Love">
@@ -9,17 +9,17 @@ const Footer = () => {
           </span>{" "}
           by Prakash Sakari
         </p>
-        <div class="d-flex gap align-center padding-all-16">
+        <div className="d-flex gap align-center padding-all-16">
           {footer.map(({imgUrl, alt, link}) => {
             return (
               <a
             href={link}
-            class="link"
+            className="link"
             target="_blank"
             rel="noreferrer"
           >
             <img
-              class="source-image"
+              className="source-image"
               src={imgUrl}
               alt={alt}
             />
