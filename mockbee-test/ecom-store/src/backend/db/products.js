@@ -18,6 +18,8 @@ export const products = [
     discount: 70,
     outOfStock: false,
     isFast: true,
+    itemCategory: "men",
+    itemRating: 4.8
   },
   {
     _id: uuid(),
@@ -32,6 +34,8 @@ export const products = [
     discount: 50,
     outOfStock: true,
     isFast: true,
+    itemCategory: "women",
+    itemRating: 3.9
   },
   {
     _id: uuid(),
@@ -41,11 +45,13 @@ export const products = [
     isFavourite: false,
     title: "Bata",
     productCategory: "Boys Sandals",
-    newPrice: 5039,
-    oldPrice: 4927,
-    discount: 12,
+    newPrice: 3159,
+    oldPrice: 3999,
+    discount: 21,
     outOfStock: false,
     isFast: false,
+    itemCategory: "boys",
+    itemRating: 2.9
   },
   {
     _id: uuid(),
@@ -54,11 +60,13 @@ export const products = [
     isFavourite: false,
     title: "Sparx",
     productCategory: "Girls Shoes - Premium",
-    newPrice: 3599,
-    oldPrice: 4499,
-    discount: 20,
+    newPrice: 2554,
+    oldPrice: 3499,
+    discount: 27,
     outOfStock: false,
     isFast: true,
+    itemCategory: "girls",
+    itemRating: 1.1
   },
   {
     _id: uuid(),
@@ -67,11 +75,13 @@ export const products = [
     isFavourite: false,
     title: "Nike",
     productCategory: "Girls Shoes - Premium",
-    newPrice: 3284,
-    oldPrice: 4499,
-    discount: 27,
+    newPrice: 1574,
+    oldPrice: 2499,
+    discount: 37,
     outOfStock: true,
     isFast: false,
+    itemCategory: "girls",
+    itemRating: 1.8
   },
   {
     _id: uuid(),
@@ -86,6 +96,8 @@ export const products = [
     discount: 33,
     outOfStock: false,
     isFast: true,
+    itemCategory: "boys",
+    itemRating: 2.5
   },
   {
     _id: uuid(),
@@ -95,11 +107,13 @@ export const products = [
     isFavourite: false,
     title: "Addidas Collection",
     productCategory: "Addidas Vintage for Men",
-    newPrice: 1487,
-    oldPrice: 4499,
+    newPrice: 494,
+    oldPrice: 1499,
     discount: 67,
     outOfStock: false,
     isFast: false,
+    itemCategory: "men",
+    itemRating: 3.6
   },
   {
     _id: uuid(),
@@ -113,6 +127,8 @@ export const products = [
     discount: 53,
     outOfStock: true,
     isFast: true,
+    itemCategory: "girls",
+    itemRating: 4.2
   },
   {
     _id: uuid(),
@@ -121,10 +137,12 @@ export const products = [
     isFavourite: false,
     title: "Puma",
     productCategory: "Women Running Shoes",
-    newPrice: 4049,
+    newPrice: 899,
     oldPrice: 4499,
-    discount: 10,
+    discount: 80,
     outOfStock: false,
     isFast: false,
+    itemCategory: "women",
+    itemRating: 4.5
   }
 ];

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className="heading d-flex grow1-shrink1-basisauto align-center">
+    <header className="heading d-flex grow1-shrink1-basisauto align-center  fixed top-0 left-0">
       <div className="heading-title-icon d-flex align-center">
         <img
           className="icon mr-1 border-radius-50"

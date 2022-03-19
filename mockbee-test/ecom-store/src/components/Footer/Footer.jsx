@@ -13,9 +13,9 @@ const Footer = () => {
         by Prakash Sakari
       </p>
       <div className="d-flex gap align-center padding-all-16">
-        {footer.map(({imgUrl, alt, link}) => {
+        {footer.map(({imgUrl, alt, link, _id}) => {
           return (
-            <a
+            <a key={_id}
           href={link}
           className="link"
           target="_blank"
