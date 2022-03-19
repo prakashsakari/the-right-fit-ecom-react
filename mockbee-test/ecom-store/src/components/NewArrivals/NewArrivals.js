@@ -7,7 +7,7 @@ const NewArrivals = () => {
         {latestCollection.map(({ imgUrl }) => {
           return (
             <>
-              <Link to="/" class="link">
+              <Link to="products" class="link">
                 <div className="new-arrival-banner-container d-flex gap shadow">
                   <img className="new-arrival-img" src={imgUrl} alt="collection" />
                   <div className="arrival-details d-flex direction-column">
