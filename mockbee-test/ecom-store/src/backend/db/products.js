@@ -13,9 +13,11 @@ export const products = [
     isFavourite: false,
     title: "Nike",
     productCategory: "Men Sneakers",
-    newPrice: 1750,
+    newPrice: 750,
     oldPrice: 2499,
-    discount: Math.floor(Math.random() * 100)
+    discount: 70,
+    outOfStock: false,
+    isFast: true,
   },
   {
     _id: uuid(),
@@ -27,7 +29,9 @@ export const products = [
     productCategory: "Women Shoes",
     newPrice: 750,
     oldPrice: 1499,
-    discount: Math.floor(Math.random() * 100)
+    discount: 50,
+    outOfStock: true,
+    isFast: true,
   },
   {
     _id: uuid(),
@@ -37,9 +41,11 @@ export const products = [
     isFavourite: false,
     title: "Bata",
     productCategory: "Boys Sandals",
-    newPrice: 2750,
-    oldPrice: 3499,
-    discount: Math.floor(Math.random() * 100)
+    newPrice: 5039,
+    oldPrice: 4927,
+    discount: 12,
+    outOfStock: false,
+    isFast: false,
   },
   {
     _id: uuid(),
@@ -50,7 +56,9 @@ export const products = [
     productCategory: "Girls Shoes - Premium",
     newPrice: 3599,
     oldPrice: 4499,
-    discount: 20
+    discount: 20,
+    outOfStock: false,
+    isFast: true,
   },
   {
     _id: uuid(),
@@ -61,7 +69,9 @@ export const products = [
     productCategory: "Girls Shoes - Premium",
     newPrice: 3284,
     oldPrice: 4499,
-    discount: 27
+    discount: 27,
+    outOfStock: true,
+    isFast: false,
   },
   {
     _id: uuid(),
@@ -73,7 +83,9 @@ export const products = [
     productCategory: "Boys Converse",
     newPrice: 1674,
     oldPrice: 2499,
-    discount: 33
+    discount: 33,
+    outOfStock: false,
+    isFast: true,
   },
   {
     _id: uuid(),
@@ -85,7 +97,9 @@ export const products = [
     productCategory: "Addidas Vintage for Men",
     newPrice: 1487,
     oldPrice: 4499,
-    discount: 67
+    discount: 67,
+    outOfStock: false,
+    isFast: false,
   },
   {
     _id: uuid(),
@@ -96,7 +110,9 @@ export const products = [
     productCategory: "Girls Running Shoes",
     newPrice: 1644,
     oldPrice: 3499,
-    discount: 53
+    discount: 53,
+    outOfStock: true,
+    isFast: true,
   },
   {
     _id: uuid(),
@@ -107,6 +123,8 @@ export const products = [
     productCategory: "Women Running Shoes",
     newPrice: 4049,
     oldPrice: 4499,
-    discount: 10
+    discount: 10,
+    outOfStock: false,
+    isFast: false,
   }
 ];
