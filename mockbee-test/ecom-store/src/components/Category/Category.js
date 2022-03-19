@@ -25,6 +25,7 @@ const Category = () => {
           return (
             <>
               <Link className="link relative effect" to="/products">
+
                 <div className="category category-men">
                   <img
                     className="category-image border-radius-4"
