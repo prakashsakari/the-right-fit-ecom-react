@@ -11,7 +11,7 @@ const Products = () => {
                 const {data : {products}} = await axios.get("/api/products")
                 setProducts(products);
             }catch(error){
-                setError(error);
+                setError("No products to display");
             }
         })()
     }, [])

@@ -48,9 +48,9 @@ export const products = [
     isFavourite: false,
     title: "Sparx",
     productCategory: "Girls Shoes - Premium",
-    newPrice: 3750,
+    newPrice: 3599,
     oldPrice: 4499,
-    discount: Math.floor(Math.random() * 100)
+    discount: 20
   },
   {
     _id: uuid(),
@@ -59,9 +59,9 @@ export const products = [
     isFavourite: false,
     title: "Nike",
     productCategory: "Girls Shoes - Premium",
-    newPrice: 3750,
+    newPrice: 3284,
     oldPrice: 4499,
-    discount: Math.floor(Math.random() * 100)
+    discount: 27
   },
   {
     _id: uuid(),
@@ -71,9 +71,9 @@ export const products = [
     isFavourite: false,
     title: "All Star",
     productCategory: "Boys Converse",
-    newPrice: 1750,
+    newPrice: 1674,
     oldPrice: 2499,
-    discount: Math.floor(Math.random() * 100)
+    discount: 33
   },
   {
     _id: uuid(),
@@ -83,9 +83,9 @@ export const products = [
     isFavourite: false,
     title: "Addidas Collection",
     productCategory: "Addidas Vintage for Men",
-    newPrice: 3750,
+    newPrice: 1487,
     oldPrice: 4499,
-    discount: Math.floor(Math.random() * 100)
+    discount: 67
   },
   {
     _id: uuid(),
@@ -94,9 +94,9 @@ export const products = [
     isFavourite: false,
     title: "Nike",
     productCategory: "Girls Running Shoes",
-    newPrice: 2750,
+    newPrice: 1644,
     oldPrice: 3499,
-    discount: Math.floor(Math.random() * 100)
+    discount: 53
   },
   {
     _id: uuid(),
@@ -105,8 +105,8 @@ export const products = [
     isFavourite: false,
     title: "Puma",
     productCategory: "Women Running Shoes",
-    newPrice: 3750,
+    newPrice: 4049,
     oldPrice: 4499,
-    discount: Math.floor(Math.random() * 100)
+    discount: 10
   }
 ];
