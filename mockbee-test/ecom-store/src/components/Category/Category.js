@@ -24,7 +24,7 @@ const Category = () => {
         {categories.map(({ imgUrl, alt, category }) => {
           return (
             <>
-              <Link className="link relative effect" to="/">
+              <Link className="link relative effect" to="/products">
                 <div className="category category-men">
                   <img
                     className="category-image border-radius-4"
