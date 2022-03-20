@@ -51,6 +51,13 @@ export const productReducer = (state, { type, payload }) => {
           category: "all",
           rating: ""
         };
+      case "WISHLIST":
+        return {
+          ...state,
+          myWishlist: !state.myWishlist.some((p) => p.id === payload.id)
+            ? [...state.myWishlist, payload]
+            : state.myWishlist
+        };
   
       default:
         return state;

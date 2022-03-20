@@ -1,7 +1,14 @@
 import "./ProductCard.css";
-const ProductCard = ({ imgUrl, isTrending, title, productCategory, 
-  newPrice, oldPrice, discount, outOfStock, isFast
-}) => {
+import { useFilter } from "../../context/filter-product-context";
+const ProductCard = ({ product }) => {
+  const {
+    state: { myWishlist },
+    productDispatch
+  } = useFilter();
+  const { 
+    imgUrl, isTrending, title, productCategory, newPrice, 
+    oldPrice, discount, outOfStock, isFast
+  } = product;
   const getClassName = (outOfStock) => {
     if (outOfStock) {
       const className =
@@ -28,8 +35,22 @@ const ProductCard = ({ imgUrl, isTrending, title, productCategory,
             Express Delivery
           </small>
         )}
-        <button className="badge-close cursor absolute fav-outline d-flex align-center justify-center">
-          <span className="material-icons-outlined">favorite</span>
+        <button
+          className="badge-close cursor absolute fav-outline d-flex align-center justify-center"
+          onClick={() =>
+            productDispatch({
+              type: "WISHLIST",
+              payload: product
+            })
+          }
+        >
+          {myWishlist.some((p) => p.id === product.id) ? (
+            <span className="material-icons-outlined wishlist-color">
+              favorite
+            </span>
+          ) : (
+            <span className="material-icons-outlined">favorite</span>
+          )}
         </button>
       </div>
       <div className="card-details">
