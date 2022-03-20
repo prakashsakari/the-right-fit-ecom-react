@@ -5,14 +5,16 @@ import App from "./App";
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import { makeServer } from "./server";
-
+import { FilterProvider } from "./context/filter-product-context";
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+    <FilterProvider>
+        <App />
+      </FilterProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

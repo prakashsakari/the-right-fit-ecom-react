@@ -5,6 +5,7 @@
 @import url("./components/NewArrivals/NewArrivals.css");
 @import url("./components/Footer/Footer.css");
 @import url("./components/ProductCard/ProductCard.css");
+@import url("./components/Filter/Filter.css");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
 
 .page {

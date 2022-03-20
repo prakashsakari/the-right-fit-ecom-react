@@ -2,14 +2,26 @@
     margin-top: 5rem;
     margin-left: 20rem;
     padding: 2rem 5rem;
-}
+  }
   
-.card-image-container {
+  .card-image-container {
     width: 100%;
-    height: 240px;
-}
+    height: 15rem;
+  }
   
-.card-image {
+  .card-image {
     height: 100%;
-}
+  }
+  
+  .strik-through {
+    text-decoration: line-through;
+  }
+  
+  .top-1 {
+    top: 0;
+  }
+  
+  .top-2 {
+    top: 1.7rem;
+  }
   
