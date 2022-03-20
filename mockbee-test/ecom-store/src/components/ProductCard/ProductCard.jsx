@@ -1,14 +1,6 @@
 import "./ProductCard.css";
-const ProductCard = ({
-  imgUrl,
-  isTrending,
-  title,
-  productCategory,
-  newPrice,
-  oldPrice,
-  discount,
-  outOfStock,
-  isFast
+const ProductCard = ({ imgUrl, isTrending, title, productCategory, 
+  newPrice, oldPrice, discount, outOfStock, isFast
 }) => {
   const getClassName = (outOfStock) => {
     if (outOfStock) {
