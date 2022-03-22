@@ -62,9 +62,9 @@ const Products = () => {
           <FilterByDelivery />
         </aside>
         <main className="product-content d-flex gap-48px wrap">
-          {filterProducts.map((product) => (
+          {filterProducts.length > 0 ? (filterProducts.map((product) => (
             <ProductCard product={product} key={product.id} />
-          ))}
+          ))) : <h2>{error}</h2>}
         </main>
       </div>
       <Footer />

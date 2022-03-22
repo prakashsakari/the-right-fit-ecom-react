@@ -12,3 +12,5 @@ export { FilterByDelivery } from "./Filter/FilterByDelivery";
 export { ClearFilter } from "./Filter/ClearFilter";
 export { FilterByCategory } from "./Filter/FilterByCategory";
 export { FilterByRating } from "./Filter/FilterByRating";
+export {FinalPrice} from "./FinalPrice/FinalPrice";
+export {ProductCardHorizontal} from "./ProductCard/ProductCardHorizontal";

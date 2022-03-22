@@ -1,64 +1,72 @@
 import { Link } from "react-router-dom";
-import { useFilter } from "../../context";
+import { useFilter, useCart } from "../../context";
+import "./Navbar.css";
 const Navbar = () => {
-  const {state : {myWishlist}} = useFilter()
+  const {
+    state: { myWishlist }
+  } = useFilter();
+
+  const {
+    cartState: { cart }
+  } = useCart();
+
   return (
-    <header className="heading d-flex grow1-shrink1-basisauto align-center  fixed top-0 left-0">
+    <header className="heading d-flex grow1-shrink1-basisauto align-center fixed top-0 left-0">
       <div className="heading-title-icon d-flex align-center">
         <img
-          className="icon mr-1 border-radius-50"
+          class="icon mr-1 border-radius-50"
           src="https://therightfit.netlify.app/assets/The%20Right%20Fit-logos.jpeg"
           alt="lightbulb"
         />
-        <h1 className="heading-title">
-          <Link className="link" to="/">
+        <h1 class="heading-title">
+          <Link class="link" to="/">
             The Right Fit
           </Link>
         </h1>
       </div>
-      <div className="search-box-container relative">
+      <div class="search-box-container relative">
         <input
-          className="search-box padding-all-8 border-radius-4"
+          class="search-box padding-all-8 border-radius-4"
           type="text"
           placeholder="Search"
         />
         <img
           src="https://therightfit.netlify.app/assets/outline_search_black_24dp.png"
           alt="Search"
-          className="search-icon absolute left-0 top-0"
+          class="search-icon absolute left-0 top-0"
         />
       </div>
-      <nav className="navigation">
-        <ul className="list-non-bullet d-flex align-center gap">
-          <li className="list-item-inline">
-            <Link to="/" className="link">
-              <button className="button btn-outline-primary ">Login</button>
+      <nav class="navigation">
+        <ul class="list-non-bullet d-flex align-center gap">
+          <li class="list-item-inline">
+            <Link to="/" class="link">
+              <button class="button btn-outline-primary ">Login</button>
             </Link>
           </li>
-          <li className="list-item-inline">
-            <Link to="/wishlist" className="link">
-              <div className="icon-badge relative">
+          <li class="list-item-inline">
+            <Link to="/wishlist" class="link">
+              <div class="icon-badge relative">
                 <img
-                  className="icon-img"
+                  class="icon-img"
                   src="https://therightfit.netlify.app/assets/fav-outline-48px.png"
                   alt="wishlist"
                 />
-                <div className="badge-number avatar-badge d-flex align-center justify-center">
+                <div class="badge-number avatar-badge d-flex align-center justify-center">
                   {myWishlist.length}
                 </div>
               </div>
             </Link>
           </li>
-          <li className="list-item-inline">
-            <Link to="/" className="link d-flex align-center gap-8px">
-              <div className="icon-badge relative">
+          <li class="list-item-inline">
+            <Link to="/cart" class="link d-flex align-center gap-8px">
+              <div class="icon-badge relative">
                 <img
-                  className="icon-img"
+                  class="icon-img"
                   src="https://therightfit.netlify.app/assets/cart-outline-48px.png"
                   alt="cart"
                 />
-                <div className="badge-number avatar-badge d-flex align-center justify-center">
-                  1
+                <div class="badge-number avatar-badge d-flex align-center justify-center">
+                  {cart.length}
                 </div>
               </div>
               Cart
