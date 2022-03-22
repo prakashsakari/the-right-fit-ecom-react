@@ -10,7 +10,8 @@ const FilterProvider = ({ children }) => {
     includeOutOfStock: false,
     fastDelivery: false,
     category: "all",
-    rating: 0
+    rating: 0,
+    myWishlist: []
   });
   return (
     <FilterContext.Provider value={{ state, productDispatch }}>

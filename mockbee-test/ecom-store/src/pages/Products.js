@@ -63,7 +63,7 @@ const Products = () => {
         </aside>
         <main className="product-content d-flex gap-48px wrap">
           {filterProducts.map((product) => (
-            <ProductCard {...product} key={product.id} />
+            <ProductCard product={product} key={product.id} />
           ))}
         </main>
       </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-
+import { useFilter } from "../../context";
 const Navbar = () => {
+  const {state : {myWishlist}} = useFilter()
   return (
     <header className="heading d-flex grow1-shrink1-basisauto align-center  fixed top-0 left-0">
       <div className="heading-title-icon d-flex align-center">
@@ -35,7 +36,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="list-item-inline">
-            <Link to="/" className="link">
+            <Link to="/wishlist" className="link">
               <div className="icon-badge relative">
                 <img
                   className="icon-img"
@@ -43,7 +44,7 @@ const Navbar = () => {
                   alt="wishlist"
                 />
                 <div className="badge-number avatar-badge d-flex align-center justify-center">
-                  2
+                  {myWishlist.length}
                 </div>
               </div>
             </Link>
