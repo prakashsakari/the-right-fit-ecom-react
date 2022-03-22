@@ -1,7 +1,5 @@
 import "./App.css"
-import {Home} from "./pages/Home"
-import { Products } from "./pages/Products";
-import {Wishlist} from "./pages/Wishlist";
+import {Home, Products, Wishlist} from "./pages"
 import { Routes, Route } from "react-router-dom";
 
 export default function App() {

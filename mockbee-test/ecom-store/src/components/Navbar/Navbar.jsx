@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useFilter } from "../../context/filter-product-context";
+import { useFilter } from "../../context";
 const Navbar = () => {
   const {state : {myWishlist}} = useFilter()
   return (
