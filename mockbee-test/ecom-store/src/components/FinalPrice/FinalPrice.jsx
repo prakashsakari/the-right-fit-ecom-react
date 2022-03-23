@@ -36,7 +36,7 @@ export const FinalPrice = () => {
           <p className="mg-left">Rs. {totalItemPrice}</p>
         </div>
         <div className="discount-rate d-flex align-center">
-          <p>Dsicount</p>
+          <p>Discount</p>
           <p className="mg-left">- Rs. {discountedPrice}</p>
         </div>
         <div className="delivery-charge d-flex align-center">

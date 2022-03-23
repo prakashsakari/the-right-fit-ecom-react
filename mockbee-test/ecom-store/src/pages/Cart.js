@@ -5,7 +5,6 @@ export const Cart = () => {
   const {
     cartState: { cart }
   } = useCart();
-  console.log(cart);
   return (
     <>
       <Navbar />
