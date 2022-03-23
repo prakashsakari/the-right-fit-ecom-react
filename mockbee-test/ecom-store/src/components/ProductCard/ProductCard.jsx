@@ -1,14 +1,19 @@
 import "./ProductCard.css";
-import { useFilter } from "../../context/filter-product-context";
+import { useFilter, useCart } from "../../context";
 const ProductCard = ({ product }) => {
   const {
     state: { myWishlist },
     productDispatch
   } = useFilter();
-  const { 
-    imgUrl, isTrending, title, productCategory, newPrice, 
-    oldPrice, discount, outOfStock, isFast
+
+  const {
+    cartState: { cart },
+    cartDispatch
+  } = useCart();
+
+  const { imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, outOfStock, isFast
   } = product;
+  
   const getClassName = (outOfStock) => {
     if (outOfStock) {
       const className =
@@ -44,7 +49,7 @@ const ProductCard = ({ product }) => {
             })
           }
         >
-          {myWishlist.some((p) => p.id === product.id) ? (
+          {myWishlist.some((item) => item.id === product.id) ? (
             <span className="material-icons-outlined wishlist-color">
               favorite
             </span>
@@ -66,13 +71,40 @@ const ProductCard = ({ product }) => {
           </p>
         </div>
         <div className="cta-btn">
-          <button className={getClassName(outOfStock)} disabled={outOfStock}>
-            <img
-              src="https://therightfit.netlify.app/assets/cart-white.png"
-              alt="cart"
-            />{" "}
-            {outOfStock ? "Out of Stock" : "Add to Cart"}
-          </button>
+          {cart.some((item) => item.id === product.id) ? (
+            <button
+              className="button btn-primary btn-icon d-flex cursor btn-margin gap align-center"
+              onClick={() =>
+                cartDispatch({
+                  type: "REMOVE_FROM_CART",
+                  payload: product
+                })
+              }
+            >
+              <img
+                src="https://uilight.netlify.app/assets/delete.png"
+                alt="remove"
+              />
+              Remove From Cart
+            </button>
+          ) : (
+            <button
+              className={getClassName(outOfStock)}
+              disabled={outOfStock}
+              onClick={() =>
+                cartDispatch({
+                  type: "ADD_TO_CART",
+                  payload: product
+                })
+              }
+            >
+              <img
+                src="https://therightfit.netlify.app/assets/cart-white.png"
+                alt="cart"
+              />{" "}
+              {outOfStock ? "Out of Stock" : "Add to Cart"}
+            </button>
+          )}
         </div>
       </div>
     </div>
