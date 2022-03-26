@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
-import { useFilter } from "../../context";
+import { useFilter, useCart } from "../../context";
+import "./Navbar.css";
 const Navbar = () => {
-  const {state : {myWishlist}} = useFilter()
+  const {
+    state: { myWishlist }
+  } = useFilter();
+
+  const {
+    cartState: { cart }
+  } = useCart();
+
   return (
-    <header className="heading d-flex grow1-shrink1-basisauto align-center  fixed top-0 left-0">
+    <header className="heading d-flex grow1-shrink1-basisauto align-center fixed top-0 left-0">
       <div className="heading-title-icon d-flex align-center">
         <img
           className="icon mr-1 border-radius-50"
@@ -31,7 +39,7 @@ const Navbar = () => {
       <nav className="navigation">
         <ul className="list-non-bullet d-flex align-center gap">
           <li className="list-item-inline">
-            <Link to="/" className="link">
+            <Link to="/login" className="link">
               <button className="button btn-outline-primary ">Login</button>
             </Link>
           </li>
@@ -50,7 +58,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="list-item-inline">
-            <Link to="/" className="link d-flex align-center gap-8px">
+            <Link to="/cart" className="link d-flex align-center gap-8px">
               <div className="icon-badge relative">
                 <img
                   className="icon-img"
@@ -58,7 +66,7 @@ const Navbar = () => {
                   alt="cart"
                 />
                 <div className="badge-number avatar-badge d-flex align-center justify-center">
-                  1
+                  {cart.length}
                 </div>
               </div>
               Cart
