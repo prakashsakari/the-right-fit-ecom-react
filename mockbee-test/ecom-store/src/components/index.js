@@ -14,3 +14,5 @@ export { FilterByCategory } from "./Filter/FilterByCategory";
 export { FilterByRating } from "./Filter/FilterByRating";
 export {FinalPrice} from "./FinalPrice/FinalPrice";
 export {ProductCardHorizontal} from "./ProductCard/ProductCardHorizontal";
+export { AuthLogin } from "./Auth/Login";
+export { AuthSignUp } from "./Auth/SignUp";

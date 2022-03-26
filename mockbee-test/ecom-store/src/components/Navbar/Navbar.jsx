@@ -39,7 +39,7 @@ const Navbar = () => {
       <nav className="navigation">
         <ul className="list-non-bullet d-flex align-center gap">
           <li className="list-item-inline">
-            <Link to="/" className="link">
+            <Link to="/login" className="link">
               <button className="button btn-outline-primary ">Login</button>
             </Link>
           </li>

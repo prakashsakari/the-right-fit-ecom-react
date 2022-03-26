@@ -5,8 +5,8 @@ import App from "./App";
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import { makeServer } from "./server";
-import { FilterProvider } from "./context/filter-product-context";
-import {CartProvider} from "./context/cart-context";
+import { FilterProvider, CartProvider, AuthProvider } from "./context";
+
 // Call make Server
 makeServer();
 
@@ -15,7 +15,9 @@ ReactDOM.render(
     <BrowserRouter>
     <FilterProvider>
         <CartProvider>
-          <App />
+          <AuthProvider>
+            <App />
+          </AuthProvider>
         </CartProvider>
       </FilterProvider>
     </BrowserRouter>
