@@ -30,7 +30,7 @@ export const AuthSignUp = () => {
         <div className="form-container">
           <label className="form-label">Firtsname</label>
           <input
-            type="email"
+            type="text"
             className="form-input lh-ls"
             placeholder="Prakash"
           />
@@ -38,7 +38,7 @@ export const AuthSignUp = () => {
         <div className="form-container">
           <label className="form-label">Last Name</label>
           <input
-            type="email"
+            type="text"
             className="form-input lh-ls"
             placeholder="Sakari"
           />
