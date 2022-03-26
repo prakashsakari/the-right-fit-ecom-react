@@ -1,4 +1,4 @@
-import { Navbar, ProductCard } from "../components";
+import { Navbar, WishlistProduct } from "../components";
 import { useFilter } from "../context/filter-product-context";
 import "./Wishlist.css";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ export const Wishlist = () => {
           <h2 className="margin-top d-flex justify-center">My Wishlist</h2>
           <main className="product-display d-flex gap-48px wrap">
             {myWishlist.map((product) => (
-              <ProductCard product={product} key={product.id} />
+              <WishlistProduct product={product} key={product.id} />
             ))}
           </main>
         </>
