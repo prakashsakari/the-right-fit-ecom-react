@@ -1,5 +1,11 @@
 export const passwordReducer = (state, { type, payload }) => {
     switch (type) {
+      case "FIRST_NAME":
+      return {
+        ...state,
+        name: payload
+      };
+      
       case "PASSWORD_CHECK":
         return {
           ...state,
@@ -21,6 +27,17 @@ export const passwordReducer = (state, { type, payload }) => {
           ...state,
           email: payload,
           isEmailValid: payload.includes("@") ? true : false
+        };
+      
+      case "GET_USER_NAME":
+        return {
+          ...state,
+          userName: payload.includes(".")
+            ? payload
+                .split(".")
+                .join("")
+                .slice(0, payload.indexOf("@") - 1)
+            : payload.slice(0, payload.indexOf("@"))
         };
   
       default:

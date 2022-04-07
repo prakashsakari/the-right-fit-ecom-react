@@ -16,7 +16,7 @@ export const AuthLogin = () => {
   const getButtonState = (password) => {
     return password.length < 6 ||
       password === "" ||
-      !password.match("^[A-Za-z0-9]+$")
+      !password.match("^[A-Za-z0-9]+$") || email === ""
       ? true
       : false;
   };
@@ -90,6 +90,12 @@ export const AuthLogin = () => {
             <button
               className="login-btn button btn-primary cursor btn-margin sign-up-btn"
               disabled={getButtonState(password)}
+              onClick={() =>
+                passwordDispatch({
+                  type: "GET_USER_NAME",
+                  payload: email
+                })
+              }
             >
               Login
             </button>
