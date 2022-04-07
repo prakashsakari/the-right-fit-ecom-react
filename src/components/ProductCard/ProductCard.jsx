@@ -1,5 +1,5 @@
 import "./ProductCard.css";
-import { useFilter, useCart } from "../../context";
+import { useFilter, useCart, useAuth } from "../../context";
 const ProductCard = ({ product }) => {
   const {
     state: { myWishlist },
@@ -10,6 +10,10 @@ const ProductCard = ({ product }) => {
     cartState: { cart },
     cartDispatch
   } = useCart();
+
+  const {
+    state: { userName }
+  } = useAuth();
 
   const { imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, outOfStock, isFast
   } = product;
@@ -45,11 +49,14 @@ const ProductCard = ({ product }) => {
           onClick={() =>
             productDispatch({
               type: "WISHLIST",
-              payload: product
+              payload: {
+                product: product,
+                userName: userName
+              }
             })
           }
         >
-          {myWishlist.some((item) => item.id === product.id) ? (
+          {userName.length > 0 && myWishlist.some((item) => item.id === product.id) ? (
             <span className="material-icons-outlined wishlist-color">
               favorite
             </span>
@@ -71,7 +78,7 @@ const ProductCard = ({ product }) => {
           </p>
         </div>
         <div className="cta-btn">
-          {cart.some((item) => item.id === product.id) ? (
+          {userName.length > 0 && cart.some((item) => item.id === product.id) ? (
             <button
               className="button btn-primary btn-icon d-flex cursor btn-margin gap align-center"
               onClick={() =>
