@@ -39,6 +39,13 @@ export const passwordReducer = (state, { type, payload }) => {
                 .slice(0, payload.indexOf("@") - 1)
             : payload.slice(0, payload.indexOf("@"))
         };
+      case "LOGOUT":
+        return {
+          ...state,
+          userName: "",
+          password: "",
+          email: "",
+        };
   
       default:
         return state;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useFilter, useCart, useAuth } from "../../context";
 import "./Navbar.css";
+
 const Navbar = ({ route }) => {
   const {
     state: { myWishlist }
@@ -43,10 +44,20 @@ const Navbar = ({ route }) => {
       </div>
       <nav className="navigation">
         <ul className="list-non-bullet d-flex align-center gap">
+        {userName && route !== "login" && route !== "signup" && (
+            <li className="list-item-inline">{`Hi ${userName}`}</li>
+          )}
           <li className="list-item-inline">
             <Link to="/login" className="link">
-              <button className="button btn-outline-primary">
-                Login
+              <button className="button btn-outline-primary"
+              onClick={() =>
+                userName &&
+                userName.length > 0 &&
+                passwordDispatch({
+                  type: "LOGOUT"
+                })
+              } >
+                {userName ? "Logout" : "Login"}
               </button>
             </Link>
           </li>
