@@ -86,10 +86,11 @@ Start the server
 ```
 
 
+## Screenshot
+![ecom-1](https://user-images.githubusercontent.com/80476561/162252611-6ffe723f-b2ef-491d-bf6a-927f2e795c45.png)
+![ecom-2](https://user-images.githubusercontent.com/80476561/162252626-1f88b6b0-05c2-4cec-a747-3fad7bee82f1.png)
+![ecom-3](https://user-images.githubusercontent.com/80476561/162252634-4376f442-914c-4138-903a-15af72a3c106.png)
 
 
-## Demo
-
-![therightfit-gif](https://user-images.githubusercontent.com/80476561/154789000-c1d92abc-ca10-44ba-90d3-fa6476ba558a.gif)
 
 
