@@ -13,6 +13,7 @@ export const Cart = () => {
   useEffect(() => {
     setRoute("cart");
   }, [route]);
+  
   return (
     <>
       <Navbar route={route} />

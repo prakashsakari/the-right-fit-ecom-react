@@ -1,8 +1,8 @@
 import { Navbar, WishlistProduct } from "../components";
 import { useFilter } from "../context/filter-product-context";
-import "./Wishlist.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./Wishlist.css";
 
 export const Wishlist = () => {
   const { state: { myWishlist }} = useFilter();

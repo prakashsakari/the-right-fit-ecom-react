@@ -2,6 +2,7 @@ import "./Auth.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../context/auth-context";
+
 export const AuthSignUp = () => {
   const [passwordtype, setPasswordType] = useState("password");
   const [confirmPasswordtype, setConfirmPasswordType] = useState("password");
