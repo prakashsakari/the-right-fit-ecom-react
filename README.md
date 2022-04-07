@@ -3,24 +3,24 @@
 
 # The Right Fit !
 
-[The Right Fit](https://therightfit.netlify.app/) is one stop for all your footwear needs. A footwear ecommerce website where you can find latest and in-trend footwear for everyone.
+[The Right Fit](https://therightfitstore.netlify.app/) is one stop for all your footwear needs. A footwear ecommerce website where you can find latest and in-trend footwear for everyone.
 
 With option to add favourite product to wishlist, to exploring seasons collection we have it all.
 
 
 ## List of features - (Only Screens)
 
-- [Home Page](https://therightfit.netlify.app/)
+- [Home Page](https://therightfitstore.netlify.app/)
 
-- [Product Page](https://therightfit.netlify.app/product-page/product-page.html)
+- [Product Page](https://therightfitstore.netlify.app/products)
 
-- [Wishlist](https://therightfit.netlify.app/wishlist/wishlist.html)
+- [Wishlist](https://therightfitstore.netlify.app/wishlist)
 
-- [Cart](https://therightfit.netlify.app/cart/cart.html)
+- [Cart](https://therightfitstore.netlify.app/cart)
 
-- [Login](https://therightfit.netlify.app/auth/login.html)
+- [Login](https://therightfitstore.netlify.app/login)
 
-- [Signup](https://therightfit.netlify.app/auth/singup.html)
+- [Signup](https://therightfitstore.netlify.app/signup)
 
 
 ## Tech Stack
@@ -33,7 +33,7 @@ With option to add favourite product to wishlist, to exploring seasons collectio
 
 ## Project Link
 
-https://therightfit.netlify.app/
+https://therightfitstore.netlify.app/
 
 ## Authors
 
