@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useFilter, useCart, useAuth } from "../../context";
 import "./Navbar.css";
-const Navbar = () => {
+const Navbar = ({ route }) => {
   const {
     state: { myWishlist }
   } = useFilter();
@@ -45,11 +45,13 @@ const Navbar = () => {
         <ul className="list-non-bullet d-flex align-center gap">
           <li className="list-item-inline">
             <Link to="/login" className="link">
-              <button className="button btn-outline-primary ">Login</button>
+              <button className="button btn-outline-primary">
+                Login
+              </button>
             </Link>
           </li>
           <li className="list-item-inline">
-            <Link to="/wishlist" className="link">
+            <Link to={userName ? "/wishlist" : "/login"} className="link">
               <div className="icon-badge relative">
                 <img
                   className="icon-img"
@@ -57,13 +59,13 @@ const Navbar = () => {
                   alt="wishlist"
                 />
                 <div className="badge-number avatar-badge d-flex align-center justify-center">
-                  {myWishlist.length}
+                  {userName.length > 0 ? myWishlist.length : 0}
                 </div>
               </div>
             </Link>
           </li>
           <li className="list-item-inline">
-            <Link to="/cart" className="link d-flex align-center gap-8px">
+            <Link to={userName ? "/cart" : "/login"} className="link d-flex align-center gap-8px">
               <div className="icon-badge relative">
                 <img
                   className="icon-img"
@@ -71,7 +73,7 @@ const Navbar = () => {
                   alt="cart"
                 />
                 <div className="badge-number avatar-badge d-flex align-center justify-center">
-                  {cart.length}
+                  {userName.length > 0 ? cart.length : 0}
                 </div>
               </div>
               Cart
