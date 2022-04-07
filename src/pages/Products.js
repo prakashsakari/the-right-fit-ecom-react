@@ -1,4 +1,4 @@
-import { Navbar, Footer, ProductCard,
+import { Navbar, ProductCard,
   PriceRange, SortByPrice, Discount,
   FilterByStock, FilterByDelivery, ClearFilter,
   FilterByCategory, FilterByRating} from "../components";
@@ -67,7 +67,6 @@ const Products = () => {
           ))) : <h2>{error}</h2>}
         </main>
       </div>
-      <Footer />
     </div>
   );
 };
