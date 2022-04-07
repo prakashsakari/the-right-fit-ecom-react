@@ -34,9 +34,10 @@
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--text-color-primary);
+  
 }
 
 .men-overlay {
   width: 100%;
-  background-color: var(--text-color-secondary);
+  background-color: var(--border-color);
 }
