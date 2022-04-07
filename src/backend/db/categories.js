@@ -8,25 +8,25 @@ import { v4 as uuid } from "uuid";
 const categories = [
   {
     _id: uuid(),
-    imgUrl: "https://cdn.shopify.com/s/files/1/0343/9037/6585/products/spartacus-sandal-430520_1000x.jpg?v=1628679972",
+    imgUrl: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/11801932/2020/4/16/034bd2a6-b3df-4762-affb-a6b0baebeef71587031146104ColeHaanMenBrownSolidGrand20LeatherFormalDerbys4.jpg",
     alt: "category-img",
     category: "Men"
   },
   {
     _id: uuid(),
-    imgUrl: "https://www.kindpng.com/picc/m/175-1756344_ladies-sandal-png-photo-ladies-sandals-image-png.png",
+    imgUrl: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/16892598/2022/2/22/09fc2ae7-f5fe-48bd-b077-ef0eca85cea51645502207058WalletsMANGOWomenEarringsMANGOWomenEarringsMANGOWomenWallets1.jpg",
     alt: "category-img",
     category: "Women"
   },
   {
     _id: uuid(),
-    imgUrl: "https://stylesatlife.com/wp-content/uploads/2017/04/Stylish-Shoe-for-Boys.jpg.webp",
+    imgUrl: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/16259982/2021/11/26/75ee3330-24ac-4b53-a7ac-1975804668b81637913547441maxBoysOliveGreenWovenDesignPUSneakers1.jpg",
     alt: "category-img",
     category: "Boys"
   },
   {
     _id: uuid(),
-    imgUrl: "https://media.istockphoto.com/photos/baby-girl-small-pink-sport-shoes-isolated-on-white-background-picture-id926424240?b=1&k=20&m=926424240&s=170667a&w=0&h=7urJAsY6t1DIi8MXxmSX1wqv7AdGk3FfDQlZgDo05Fo=",
+    imgUrl: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/17490066/2022/3/11/c8ffde11-c9d3-4e7e-b549-b1d1749d7c391647022546151Sandals2.jpg",
     alt: "category-img",
     category: "Girls"
   }
