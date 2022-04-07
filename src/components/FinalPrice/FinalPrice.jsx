@@ -1,5 +1,6 @@
 import "./FinalPrice.css";
 import { useCart } from "../../context/cart-context";
+
 export const FinalPrice = () => {
   let {
     cartState: {
@@ -28,7 +29,7 @@ export const FinalPrice = () => {
   totalAmount = Math.abs(totalItemPrice - discountedPrice + deliveryCharge);
 
   return (
-    <div className="total-price padding-all-16 align-self">
+    <div className="total-price gutter-all-16 align-self">
       <h3 className="cart-title">Price Details</h3>
       <div className="price-distribution d-flex direction-column gap">
         <div className="items-purchased d-flex align-center">

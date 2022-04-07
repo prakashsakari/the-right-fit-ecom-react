@@ -101,7 +101,10 @@ const ProductCard = ({ product }) => {
               onClick={() =>
                 cartDispatch({
                   type: "ADD_TO_CART",
-                  payload: product
+                  payload: {
+                    product: product,
+                    userName: userName
+                  }
                 })
               }
             >
