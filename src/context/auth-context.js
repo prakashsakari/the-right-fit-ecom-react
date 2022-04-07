@@ -6,10 +6,12 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [state, passwordDispatch] = useReducer(passwordReducer, {
     display: "none",
+    name: "",
     password: "",
     confirmPassword: "",
     email: "",
-    isEmailValid: true
+    isEmailValid: true,
+    userName: ""
   });
   return (
     <AuthContext.Provider value={{ state, passwordDispatch }}>

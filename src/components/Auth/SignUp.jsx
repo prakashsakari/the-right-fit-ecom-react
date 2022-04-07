@@ -7,7 +7,7 @@ export const AuthSignUp = () => {
   const [confirmPasswordtype, setConfirmPasswordType] = useState("password");
 
   const {
-    state: { password, confirmPassword, isEmailValid, email, display },
+    state: { password, confirmPassword, isEmailValid, email, display, name },
     passwordDispatch
   } = useAuth();
 
@@ -18,7 +18,9 @@ export const AuthSignUp = () => {
     return password !== confirmPassword ||
       password.length < 6 ||
       password === "" ||
-      !password.match("^[A-Za-z0-9]+$")
+      !password.match("^[A-Za-z0-9]+$") ||
+      email === "" ||
+      name === ""
       ? true
       : false;
   };
@@ -33,6 +35,12 @@ export const AuthSignUp = () => {
             type="text"
             className="form-input lh-ls"
             placeholder="Prakash"
+            onChange={(e) =>
+              passwordDispatch({
+                type: "FIRST_NAME",
+                payload: e.target.value
+              })
+            }
           />
         </div>
         <div className="form-container">

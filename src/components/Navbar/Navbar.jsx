@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useFilter, useCart } from "../../context";
+import { useFilter, useCart, useAuth } from "../../context";
 import "./Navbar.css";
 const Navbar = () => {
   const {
@@ -9,6 +9,11 @@ const Navbar = () => {
   const {
     cartState: { cart }
   } = useCart();
+
+  const {
+    state: { userName },
+    passwordDispatch
+  } = useAuth();
 
   return (
     <header className="heading d-flex grow1-shrink1-basisauto align-center fixed top-0 left-0">
