@@ -1,0 +1,15 @@
+@import url("https://uilight.netlify.app/main.css");
+@import url("./components/Navbar/Navbar.css");
+@import url("./components/Banner/Banner.css");
+@import url("./components/Category/Category.css");
+@import url("./components/NewArrivals/NewArrivals.css");
+@import url("./components/Footer/Footer.css");
+@import url("./components/ProductCard/ProductCard.css");
+@import url("./components/Filter/Filter.css");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+
+.page {
+  overflow: hidden;
+}
+
+
