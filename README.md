@@ -15,19 +15,19 @@ With option to add favourite product to wishlist, adding product to cart, to exp
 [Home Page](https://therightfitstore.netlify.app/)
 - Home page has multiple categories that will take you to the product page. There are wishlist, cart and login options on the home page.
 
-[Product Page](https://therightfitstore.netlify.app/products)
+Product Page
 -   Product page has all the products available in store with add to cart and add to wishlist and remove from cart options, there is a filter section that the can give the desired product. Filter section has filter by category, price range, instock, express delivery, rating, discount and sort by price low to high and high to low.
 
-[Wishlist](https://therightfitstore.netlify.app/wishlist)
+Wishlist
 -   Wishist page has all the items that were added to wishlist. Once added to wishlist the product can be added to cart or removed from wishlist.
 
-[Cart](https://therightfitstore.netlify.app/cart)
+Cart
 -   Cart page has all the items that were added to cart. Once added the product can be moved to wishlist, product can be removed from cart, quantity of the product can also be increased. It also displays the total amount after discount applied.
 
-[Login](https://therightfitstore.netlify.app/login)
+Login
 -   User cannot add a product to wishlist or cart without logging in, dummy email id and password will enable fetures like add to cart and wishlist
 
-[Signup](https://therightfitstore.netlify.app/signup)
+Signup
 -   New account can be created with this page.
 
 
