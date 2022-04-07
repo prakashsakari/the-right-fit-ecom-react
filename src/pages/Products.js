@@ -15,6 +15,7 @@ import {useState, useEffect} from "react";
 import axios from "axios";
 
 const Products = () => {
+  const [route, setRoute] = useState();
   const [products, setProducts] = useState([]);
   const [error, setError] = useState();
   const { state } = useFilter();
@@ -39,6 +40,11 @@ const Products = () => {
       })()
   }, [])
 
+
+  useEffect(() => {
+    setRoute("product");
+  }, [route]);
+
   const filterByDiscount = getDiscountedProducts(products, discount);
   const filterByCategory = getCategoryFilterProducts(filterByDiscount,category);
   const filterByRating = getProductsByRating(filterByCategory, rating);
@@ -49,7 +55,7 @@ const Products = () => {
 
   return (
     <div className="page">
-      <Navbar />
+      <Navbar route={route} />
       <div className="d-flex">
         <aside className="side-nav border-right sidebar-position">
           <ClearFilter />
