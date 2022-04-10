@@ -1,21 +1,22 @@
 import "./ProductCard.css";
 import { useFilter, useCart, useAuth } from "../../context";
+import { Link } from "react-router-dom";
+
 const ProductCard = ({ product }) => {
   const {
     state: { myWishlist },
     productDispatch
   } = useFilter();
-
   const {
     cartState: { cart },
     cartDispatch
   } = useCart();
 
   const {
-    state: { userName }
+    state: { userName, isLoggedIn }
   } = useAuth();
 
-  const { imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, outOfStock, isFast
+  const { _id, imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, outOfStock, isFast
   } = product;
   
   const getClassName = (outOfStock) => {
@@ -27,6 +28,14 @@ const ProductCard = ({ product }) => {
       const className =
         "button btn-primary btn-icon d-flex cursor btn-margin gap align-center";
       return className;
+    }
+  };
+
+  const getWishlistClass = () => {
+    if (isLoggedIn) {
+      return "material-icons-outlined wishlist-color";
+    } else {
+      return "material-icons-outlined";
     }
   };
 
@@ -56,8 +65,8 @@ const ProductCard = ({ product }) => {
             })
           }
         >
-          {userName.length > 0 && myWishlist.some((item) => item.id === product.id) ? (
-            <span className="material-icons-outlined wishlist-color">
+          {myWishlist.some((item) => item.id === product.id) ? (
+            <span className={getWishlistClass()}>
               favorite
             </span>
           ) : (
@@ -66,6 +75,7 @@ const ProductCard = ({ product }) => {
         </button>
       </div>
       <div className="card-details">
+      <Link className="link" to={`/product/${_id}`}>
         <div className="card-title">{title}</div>
         <div className="card-description">
           <p className="card-des">{productCategory}</p>
@@ -77,8 +87,9 @@ const ProductCard = ({ product }) => {
             <span className="discount padding-all-8">({discount}% OFF)</span>
           </p>
         </div>
+        </Link>
         <div className="cta-btn">
-          {userName.length > 0 && cart.some((item) => item.id === product.id) ? (
+          {cart.some((item) => item.id === product.id) && isLoggedIn ? (
             <button
               className="button btn-primary btn-icon d-flex cursor btn-margin gap align-center"
               onClick={() =>

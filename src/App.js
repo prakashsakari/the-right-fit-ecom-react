@@ -1,5 +1,5 @@
 import "./App.css"
-import {Home, Products, Wishlist, Cart, Login, SignUp} from "./pages"
+import {Home, Products, Wishlist, Cart, Login, SignUp, SingleProduct} from "./pages"
 import { Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/product/:productId" element={<SingleProduct />} />
       </Routes>
     </div>
   );

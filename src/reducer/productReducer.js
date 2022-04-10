@@ -54,12 +54,9 @@ export const productReducer = (state, { type, payload }) => {
       case "WISHLIST":
         return {
           ...state,
-          myWishlist:
-          payload.userName.length > 0
-            ? !state.myWishlist.some((prod) => prod.id === payload.product.id)
+          myWishlist: !state.myWishlist.some((prod) => prod.id === payload.product.id)
               ? [...state.myWishlist, payload.product]
-              : state.myWishlist
-            : [],
+              : state.myWishlist,
         };
       case "REMOVE_FROM_WISHLIST":
         return {

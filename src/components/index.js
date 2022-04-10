@@ -17,3 +17,4 @@ export {FinalPrice} from "./FinalPrice/FinalPrice";
 export {ProductCardHorizontal} from "./ProductCard/ProductCardHorizontal";
 export { AuthLogin } from "./Auth/Login";
 export { AuthSignUp } from "./Auth/SignUp";
+export { ProductDetails } from "./ProductCard/ProductDetails";
