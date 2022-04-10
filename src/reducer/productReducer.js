@@ -1,5 +1,10 @@
 export const productReducer = (state, { type, payload }) => {
     switch (type) {
+      case "SEARCH_INPUT":
+      return {
+        ...state,
+        searchInput: payload
+      };
       case "RANGE":
         return {
           ...state,

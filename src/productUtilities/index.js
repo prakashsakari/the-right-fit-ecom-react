@@ -5,3 +5,4 @@ export { getFastDeliveryProducts } from "./filter-delivery";
 export { getCategoryFilterProducts } from "./filter-category";
 export { getProductsByRating } from "./filter-by-rating";
 export {getProductsByStock} from "./filter-by-stock";
+export { getProductsBySearch } from "./filter-by-search";

@@ -11,7 +11,8 @@ const FilterProvider = ({ children }) => {
     fastDelivery: false,
     category: "all",
     rating: 0,
-    myWishlist: []
+    myWishlist: [],
+    searchInput: ""
   });
   return (
     <FilterContext.Provider value={{ state, productDispatch }}>
