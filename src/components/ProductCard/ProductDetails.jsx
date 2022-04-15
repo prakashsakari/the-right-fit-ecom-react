@@ -21,13 +21,10 @@ export const ProductDetails = ({ sproduct }) => {
 
   const getClassName = (outOfStock) => {
     if (outOfStock) {
-      const className =
-        "button btn-primary btn-icon d-flex strik-through btn-margin gap align-center";
-      return className;
+      return "button btn-primary btn-icon d-flex strik-through btn-margin gap align-center";
     } else {
-      const className =
-        "button btn-primary btn-icon d-flex cursor btn-margin gap align-center";
-      return className;
+      return "button btn-primary btn-icon d-flex cursor btn-margin gap align-center";
+     
     }
   };
 
