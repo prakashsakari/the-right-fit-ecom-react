@@ -32,6 +32,7 @@ export const passwordReducer = (state, { type, payload }) => {
       case "GET_USER_NAME":
         return {
           ...state,
+          isLoggedIn: true,
           userName: payload.includes(".")
             ? payload
                 .split(".")
@@ -45,6 +46,7 @@ export const passwordReducer = (state, { type, payload }) => {
           userName: "",
           password: "",
           email: "",
+          isLoggedIn: false
         };
   
       default:

@@ -11,7 +11,8 @@ const AuthProvider = ({ children }) => {
     confirmPassword: "",
     email: "",
     isEmailValid: true,
-    userName: ""
+    userName: "",
+    isLoggedIn: false
   });
   return (
     <AuthContext.Provider value={{ state, passwordDispatch }}>

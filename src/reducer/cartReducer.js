@@ -3,9 +3,7 @@ export const cartReducer = (cartState, { type, payload }) => {
       case "ADD_TO_CART":
         return {
           ...cartState,
-          cart: payload.userName.length > 0
-          ? [...cartState.cart, { ...payload.product, itemCount: 1 }]
-          : [],
+          cart: [...cartState.cart, { ...payload.product, itemCount: 1 }],
         };
       case "REMOVE_FROM_CART":
         return {
