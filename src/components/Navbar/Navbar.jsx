@@ -12,8 +12,7 @@ const Navbar = ({ route }) => {
   } = useCart();
 
   const {
-    state: { userName },
-    passwordDispatch
+    credentials: { userName, },logOutHandler, eToken, euser
   } = useAuth();
 
   return (
@@ -44,48 +43,44 @@ const Navbar = ({ route }) => {
       </div>
       <nav className="navigation">
         <ul className="list-non-bullet d-flex align-center gap">
-        {userName && route !== "login" && route !== "signup" && (
-            <li className="list-item-inline">{`Hi ${userName}`}</li>
+        {eToken && route !== "login" && route !== "signup" && (
+            <li className="list-item-inline">{`Hi, ${euser}`}</li>
           )}
+          <li class="list-item-inline">
+                        <button
+                            to="/login"
+                            class="cursor button btn-primary"
+                            onClick={() => logOutHandler()}>{eToken
+                                ? "Logout"
+                                : "Login"}</button>
+                    </li>       
           <li className="list-item-inline">
-            <Link to="/login" className="link">
-              <button className="button btn-outline-primary"
-              onClick={() =>
-                userName &&
-                userName.length > 0 &&
-                passwordDispatch({
-                  type: "LOGOUT"
-                })
-              } >
-                {userName ? "Logout" : "Login"}
-              </button>
-            </Link>
-          </li>
-          <li className="list-item-inline">
-            <Link to={userName ? "/wishlist" : "/login"} className="link">
+            <Link to="/wishlist" className="link">
               <div className="icon-badge relative">
                 <img
                   className="icon-img"
                   src="https://therightfit.netlify.app/assets/fav-outline-48px.png"
                   alt="wishlist"
                 />
-                <div className="badge-number avatar-badge d-flex align-center justify-center">
-                  {userName.length > 0 ? myWishlist.length : 0}
-                </div>
+                {eToken && <div className="badge-number avatar-badge d-flex align-center justify-center">
+                  {eToken && euser ? myWishlist.length : 0}
+                </div>}
+                
               </div>
             </Link>
           </li>
           <li className="list-item-inline">
-            <Link to={userName ? "/cart" : "/login"} className="link d-flex align-center gap-8px">
+            <Link to="/cart" className="link d-flex align-center gap-8px">
               <div className="icon-badge relative">
                 <img
                   className="icon-img"
                   src="https://therightfit.netlify.app/assets/cart-outline-48px.png"
                   alt="cart"
                 />
-                <div className="badge-number avatar-badge d-flex align-center justify-center">
-                  {userName.length > 0 ? cart.length : 0}
-                </div>
+                {eToken && <div className="badge-number avatar-badge d-flex align-center justify-center">
+                  {eToken && euser ? cart.length : 0}
+                </div>}
+                
               </div>
               Cart
             </Link>

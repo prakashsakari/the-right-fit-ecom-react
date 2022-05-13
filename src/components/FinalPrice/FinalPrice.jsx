@@ -25,15 +25,15 @@ export const FinalPrice = () => {
 
   discountedPrice = originalPrice - totalItemPrice;
 
-  totalAmount = Math.abs(totalItemPrice - discountedPrice + deliveryCharge);
+  totalAmount = Math.abs(originalPrice - discountedPrice + deliveryCharge);
 
   return (
-    <div className="total-price padding-all-16 align-self">
+    <div className="total-price align-self">
       <h3 className="cart-title">Price Details</h3>
       <div className="price-distribution d-flex direction-column gap">
         <div className="items-purchased d-flex align-center">
           <p>Price ({cart.length} items)</p>
-          <p className="mg-left">Rs. {totalItemPrice}</p>
+          <p className="mg-left">Rs. {originalPrice}</p>
         </div>
         <div className="discount-rate d-flex align-center">
           <p>Discount</p>
