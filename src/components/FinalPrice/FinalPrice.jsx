@@ -1,5 +1,6 @@
 import "./FinalPrice.css";
 import { useCart } from "../../context/cart-context";
+
 export const FinalPrice = () => {
   let {
     cartState: {

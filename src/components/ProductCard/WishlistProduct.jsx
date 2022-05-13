@@ -2,6 +2,7 @@ import "./ProductCard.css";
 import { useFilter, useCart, useAuth} from "../../context";
 import { isInCart } from "../../productUtilities";
 
+
 const WishlistProduct = ({ product }) => {
   const {
     removeFromWishlist

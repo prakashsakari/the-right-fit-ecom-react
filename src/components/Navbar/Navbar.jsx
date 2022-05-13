@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 const Navbar = ({ route }) => {
   const {
-    state: { myWishlist }
+    state: { myWishlist, searchInput }, productDispatch
   } = useFilter();
 
   const {
@@ -29,11 +29,19 @@ const Navbar = ({ route }) => {
           </Link>
         </h1>
       </div>
-      <div className="search-box-container relative">
+      {route !== "home" && (
+        <div className="search-box-container relative">
         <input
           className="search-box padding-all-8 border-radius-4"
           type="text"
           placeholder="Search"
+          value={searchInput}
+          onChange={(e) =>
+            productDispatch({
+              type: "SEARCH_INPUT",
+              payload: e.target.value
+            })
+          }
         />
         <img
           src="https://therightfit.netlify.app/assets/outline_search_black_24dp.png"
@@ -41,6 +49,8 @@ const Navbar = ({ route }) => {
           className="search-icon absolute left-0 top-0"
         />
       </div>
+      )}
+      
       <nav className="navigation">
         <ul className="list-non-bullet d-flex align-center gap">
         {eToken && route !== "login" && route !== "signup" && (

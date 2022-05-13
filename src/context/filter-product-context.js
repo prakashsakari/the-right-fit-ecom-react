@@ -12,7 +12,8 @@ const FilterProvider = ({ children }) => {
     fastDelivery: false,
     category: "all",
     rating: 0,
-    myWishlist: []
+    myWishlist: [],
+    searchInput: ""
   });
 
   const addToWishlist = async (product) => {

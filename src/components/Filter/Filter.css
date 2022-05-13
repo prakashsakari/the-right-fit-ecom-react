@@ -1,6 +1,7 @@
 .sidebar-position {
     margin-top: 5rem;
-    padding-bottom: 6rem;
+    padding-bottom: 10rem;
+    margin-bottom: 2rem;
     position: fixed;
     overflow: auto;
     width: 20rem;
