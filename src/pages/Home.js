@@ -1,9 +1,9 @@
 import {
-    Navbar,
-    Banner,
-    Category,
-    NewArrivals,
-    Footer
+  Navbar,
+  Banner,
+  Category,
+  NewArrivals,
+  Footer
   } from "../components";
   import { useEffect, useState } from "react";
   import "./Home.css";

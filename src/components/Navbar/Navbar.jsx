@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { useFilter, useCart } from "../../context";
+import { useFilter, useCart, useAuth } from "../../context";
 import "./Navbar.css";
-const Navbar = () => {
+
+const Navbar = ({ route }) => {
   const {
     state: { myWishlist }
   } = useFilter();
@@ -9,6 +10,11 @@ const Navbar = () => {
   const {
     cartState: { cart }
   } = useCart();
+
+  const {
+    state: { userName },
+    passwordDispatch
+  } = useAuth();
 
   return (
     <header className="heading d-flex grow1-shrink1-basisauto align-center fixed top-0 left-0">
@@ -38,13 +44,25 @@ const Navbar = () => {
       </div>
       <nav className="navigation">
         <ul className="list-non-bullet d-flex align-center gap">
+        {userName && route !== "login" && route !== "signup" && (
+            <li className="list-item-inline">{`Hi ${userName}`}</li>
+          )}
           <li className="list-item-inline">
             <Link to="/login" className="link">
-              <button className="button btn-outline-primary ">Login</button>
+              <button className="button btn-outline-primary"
+              onClick={() =>
+                userName &&
+                userName.length > 0 &&
+                passwordDispatch({
+                  type: "LOGOUT"
+                })
+              } >
+                {userName ? "Logout" : "Login"}
+              </button>
             </Link>
           </li>
           <li className="list-item-inline">
-            <Link to="/wishlist" className="link">
+            <Link to={userName ? "/wishlist" : "/login"} className="link">
               <div className="icon-badge relative">
                 <img
                   className="icon-img"
@@ -52,13 +70,13 @@ const Navbar = () => {
                   alt="wishlist"
                 />
                 <div className="badge-number avatar-badge d-flex align-center justify-center">
-                  {myWishlist.length}
+                  {userName.length > 0 ? myWishlist.length : 0}
                 </div>
               </div>
             </Link>
           </li>
           <li className="list-item-inline">
-            <Link to="/cart" className="link d-flex align-center gap-8px">
+            <Link to={userName ? "/cart" : "/login"} className="link d-flex align-center gap-8px">
               <div className="icon-badge relative">
                 <img
                   className="icon-img"
@@ -66,7 +84,7 @@ const Navbar = () => {
                   alt="cart"
                 />
                 <div className="badge-number avatar-badge d-flex align-center justify-center">
-                  {cart.length}
+                  {userName.length > 0 ? cart.length : 0}
                 </div>
               </div>
               Cart

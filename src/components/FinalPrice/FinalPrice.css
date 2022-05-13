@@ -1,4 +1,7 @@
 .align-self {
     align-self: flex-start;
-  }
-  
+}
+
+.gutter-all-16{
+  padding: 1rem;
+} 

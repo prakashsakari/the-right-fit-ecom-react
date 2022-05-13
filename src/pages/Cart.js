@@ -1,13 +1,22 @@
 import { ProductCardHorizontal, FinalPrice, Navbar } from "../components";
 import { useCart } from "../context/cart-context";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 export const Cart = () => {
+  const [route, setRoute] = useState();
+
   const {
     cartState: { cart }
   } = useCart();
+
+  useEffect(() => {
+    setRoute("cart");
+  }, [route]);
+  
   return (
     <>
-      <Navbar />
+      <Navbar route={route} />
       <main className="wishlist-page-container">
         <h2 className="text-center">My Cart</h2>
         {cart.length > 0 ? (

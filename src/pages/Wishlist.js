@@ -1,12 +1,19 @@
 import { Navbar, WishlistProduct } from "../components";
 import { useFilter } from "../context/filter-product-context";
-import "./Wishlist.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "./Wishlist.css";
+
 export const Wishlist = () => {
   const { state: { myWishlist }} = useFilter();
+  const [route, setRoute] = useState();
+
+  useEffect(() => {
+    setRoute("wishlist");
+  }, [route]);
   return (
     <>
-      <Navbar />
+      <Navbar route={route} />
       {myWishlist.length > 0 ? (
         <>
           <h2 className="margin-top d-flex justify-center">My Wishlist</h2>
