@@ -6,6 +6,7 @@ import {
     Footer
   } from "../components";
   import { useEffect, useState } from "react";
+  import "./Home.css";
   
   const Home = () => {
     const [route, setRoute] = useState();
@@ -17,10 +18,13 @@ import {
     return (
       <div className="page">
         <Navbar route={route} />
-        <Category />
-        <Banner />
-        <NewArrivals />
-        <Footer />
+        <main>
+          <Category />
+          <Banner />
+          <NewArrivals />
+          <Footer />
+        </main>
+        
       </div>
     );
   };
