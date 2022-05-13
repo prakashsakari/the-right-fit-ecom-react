@@ -5,25 +5,29 @@ import {
   NewArrivals,
   Footer
   } from "../components";
-import { useEffect, useState } from "react";
-
-const Home = () => {
-  const [route, setRoute] = useState();
+  import { useEffect, useState } from "react";
+  import "./Home.css";
+  
+  const Home = () => {
+    const [route, setRoute] = useState();
 
   useEffect(() => {
     setRoute("home");
   }, [route]);
 
-  return (
-    <div className="page">
-      <Navbar route={route} />
-      <Category />
-      <Banner />
-      <NewArrivals />
-      <Footer />
-    </div>
-  );
-};
-
-export { Home };
+    return (
+      <div className="page">
+        <Navbar route={route} />
+        <main>
+          <Category />
+          <Banner />
+          <NewArrivals />
+          <Footer />
+        </main>
+        
+      </div>
+    );
+  };
+  
+  export { Home };
   
