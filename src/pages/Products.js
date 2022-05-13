@@ -8,7 +8,7 @@ import { useFilter } from "../context/filter-product-context";
 import { getfilteredProducts, getPriceSortedProducts,
   getDiscountedProducts, getProductsByStock,
   getFastDeliveryProducts, getCategoryFilterProducts,
-  getProductsByRating} from "../productUtilities";
+  getProductsByRating, getProductsBySearch} from "../productUtilities";
 
 import {useState, useEffect} from "react";
 
@@ -26,7 +26,8 @@ const Products = () => {
   includeOutOfStock,
   fastDelivery,
   category,
-  rating
+  rating,
+  searchInput
 } = state;
 
   useEffect(() => {
@@ -52,6 +53,7 @@ const Products = () => {
   const filterByDelivery = getFastDeliveryProducts(filterByStock, fastDelivery);
   const filterByPrice = getPriceSortedProducts(filterByDelivery, sortBy);
   const filterProducts = getfilteredProducts(filterByPrice, minPrice);
+  const filterBySearch = getProductsBySearch(filterProducts, searchInput);
 
   return (
     <div className="page">
@@ -68,7 +70,7 @@ const Products = () => {
           <FilterByDelivery />
         </aside>
         <main className="product-content d-flex gap-48px wrap">
-          {filterProducts.length > 0 ? (filterProducts.map((product) => (
+          {filterBySearch.length > 0 ? (filterBySearch.map((product) => (
             <ProductCard product={product} key={product.id} />
           ))) : <h2>{error}</h2>}
         </main>
