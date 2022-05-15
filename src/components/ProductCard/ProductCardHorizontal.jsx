@@ -34,7 +34,7 @@ export const ProductCardHorizontal = ({ product }) => {
   return (
     <div className="card-horizontal d-flex shadow card-size flex-start">
       <div className="card-hori-image-container card-size-hori relative">
-        <img className="card-image d-block" src={imgUrl} alt="shoes" />
+        <img className="card-image-hori d-block" src={imgUrl} alt="shoes" />
         {isTrending && (
           <small className="c-badge bg-primary absolute left-0 top-2">
             Trending
@@ -46,7 +46,7 @@ export const ProductCardHorizontal = ({ product }) => {
           </small>
         )}
       </div>
-      <div className="card-details d-flex direction-column">
+      <div className="card-details horizontal-card d-flex direction-column">
         <div className="card-title">{title}</div>
         <div className="card-description">
           <p className="card-des">{productCategory}</p>
@@ -77,15 +77,13 @@ export const ProductCardHorizontal = ({ product }) => {
           </div>
         </div>
         <div className="cta-btn-container d-flex gap">
-          <div className="cta-btn">
             <button
               className="button btn-primary btn-icon d-flex align-center gap cursor btn-margin"
               onClick={removeFromCartHandler}
             >
               Remove From Cart
             </button>
-          </div>
-          <div className="cta-btn">
+
             <button
               className="button btn-outline-primary btn-icon d-flex align-center gap cursor btn-margin"
               disabled={isWishlisted}
@@ -94,7 +92,6 @@ export const ProductCardHorizontal = ({ product }) => {
             >
               {isWishlisted ? "Wishlisted" : "Move to Wishlist"}
             </button>
-          </div>
         </div>
       </div>
     </div>

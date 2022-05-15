@@ -33,6 +33,7 @@ const CartProvider = ({ children }) => {
   }
 
   const removeFromCart = async (product) => {
+    console.log(product);
     try {
       const {data: {cart}} = await axios.delete(`api/user/cart/${product._id}`, 
       {headers : {authorization : localStorage.getItem("token")}})

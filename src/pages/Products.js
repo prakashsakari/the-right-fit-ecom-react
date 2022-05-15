@@ -17,7 +17,7 @@ import axios from "axios";
 const Products = () => {
   const [route, setRoute] = useState();
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
   const { state } = useFilter();
   const {
   minPrice,
@@ -36,7 +36,7 @@ const Products = () => {
               const {data : {products}} = await axios.get("/api/products")
               setProducts(products);
           }catch(error){
-              setError("No products to display");
+              setError(true);
           }
       })()
   }, [])
@@ -58,7 +58,8 @@ const Products = () => {
   return (
     <div className="page">
       <Navbar route={route} />
-      <div className="d-flex">
+      {!error ? (
+        <div className="d-flex">
         <aside className="side-nav border-right sidebar-position">
           <ClearFilter />
           <PriceRange />
@@ -75,6 +76,12 @@ const Products = () => {
           ))) : <h2>{error}</h2>}
         </main>
       </div>
+      ) : (
+        <main className="product-content d-flex gap-48px wrap">
+          <h2>Nothing to display</h2>
+        </main>
+      )}
+      
     </div>
   );
 };

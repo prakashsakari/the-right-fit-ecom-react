@@ -25,8 +25,6 @@ const ProductCard = ({ product }) => {
   const isWishlisted = isInwishlist(myWishlist, _id);
   const inCart = isInCart(cart, _id)
 
-  console.log("Bool -", isWishlisted, inCart);
-
   const addToCartHandler = () => {
     if (eToken){
       addToCart(product)
@@ -50,6 +48,14 @@ const ProductCard = ({ product }) => {
   }
 
 
+  const getWishlistClass = () => {
+    if (isLoggedIn) {
+      return "material-icons-outlined wishlist-color";
+    } else {
+      return "material-icons-outlined";
+    }
+  };
+
   return (
     <div className="card card-vertical d-flex direction-column relative">
       <div className="card-image-container relative">
@@ -72,6 +78,7 @@ const ProductCard = ({ product }) => {
         </button>
       </div>
       <div className="card-details">
+      <Link className="link" to={`/product/${_id}`}>
         <div className="card-title">{title}</div>
         <div className="card-description">
           <p className="card-des">{productCategory}</p>
@@ -83,9 +90,10 @@ const ProductCard = ({ product }) => {
             <span className="discount padding-all-8">({discount}% OFF)</span>
           </p>
         </div>
+        </Link>
         <div className="cta-btn">
           <button 
-          className={`${outOfStock ? `strik-through` : `cursor`} button btn-primary btn-icon d-flex btn-margin gap align-center`} 
+          className={`${outOfStock ? `strik-through` : `cursor`} button action-btn btn-primary btn-icon d-flex btn-margin gap align-center justify-center`} 
           disabled={outOfStock}
           onClick={inCart ? removeFromCartHandler : addToCartHandler}
           >

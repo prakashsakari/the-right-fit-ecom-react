@@ -85,7 +85,7 @@ const WishlistProduct = ({ product }) => {
         </div>
         <div className="cta-btn">
         <button 
-          className={`${outOfStock ? `strik-through` : `cursor`} button btn-primary btn-icon d-flex btn-margin gap align-center`} 
+          className={`${outOfStock ? `strik-through` : `cursor`} button btn-primary btn-icon d-flex btn-margin gap action-btn  align-center justify-center`} 
           disabled={outOfStock}
           onClick={inCart ? removeFromCartHandler : addToCartHandler}
           >

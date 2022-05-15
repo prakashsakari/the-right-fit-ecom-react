@@ -13,6 +13,10 @@
   height: 100%;
 }
 
+.action-btn  {
+  width: 100%;
+}
+
 .strik-through {
   text-decoration: line-through;
 }
