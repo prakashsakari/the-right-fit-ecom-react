@@ -1,17 +1,22 @@
 import "./ProductCard.css";
-import { useFilter, useCart} from "../../context";
+import { useFilter, useCart, useAuth} from "../../context";
+import { isInCart } from "../../productUtilities";
+
 
 const WishlistProduct = ({ product }) => {
   const {
-    state: { myWishlist },
-    productDispatch
+    removeFromWishlist
   } = useFilter();
 
   const {
     cartState: { cart },
-    cartDispatch
+    addToCart, removeFromCart
   } = useCart();
+
+  const {eToken} = useAuth();
+
   const {
+    _id,
     imgUrl,
     isTrending,
     title,
@@ -22,17 +27,28 @@ const WishlistProduct = ({ product }) => {
     outOfStock,
     isFast
   } = product;
-  const getClassName = (outOfStock) => {
-    if (outOfStock) {
-      const className =
-        "button btn-primary btn-icon d-flex strik-through btn-margin gap align-center";
-      return className;
-    } else {
-      const className =
-        "button btn-primary btn-icon d-flex cursor btn-margin gap align-center";
-      return className;
+
+  const inCart = isInCart(cart, _id)
+
+  const removeFromWishlistHandler = () => {
+    if(eToken){
+      removeFromWishlist(product);
     }
-  };
+  }
+
+  const addToCartHandler = () => {
+    if (eToken){
+      addToCart(product)
+    }else{
+      navigate("/login")
+    }
+  }
+
+  const removeFromCartHandler = () => {
+    if(eToken){
+      removeFromCart(product)
+    }
+  }
 
   return (
     <div className="card card-vertical d-flex direction-column relative">
@@ -50,12 +66,7 @@ const WishlistProduct = ({ product }) => {
         )}
         <button
           className="badge-close cursor absolute fav-outline d-flex align-center justify-center"
-          onClick={() =>
-            productDispatch({
-              type: "REMOVE_FROM_WISHLIST",
-              payload: product
-            })
-          }
+          onClick={removeFromWishlistHandler}
         >
           <span className="material-icons-outlined">close</span>
         </button>
@@ -73,40 +84,16 @@ const WishlistProduct = ({ product }) => {
           </p>
         </div>
         <div className="cta-btn">
-          {cart.some((p) => p.id === product.id) ? (
-            <button
-              className="button btn-primary btn-icon d-flex cursor btn-margin gap align-center"
-              onClick={() =>
-                cartDispatch({
-                  type: "REMOVE_FROM_CART",
-                  payload: product
-                })
-              }
-            >
-              <img
-                src="https://uilight.netlify.app/assets/delete.png"
-                alt="remove"
-              />
-              Remove From Cart
-            </button>
-          ) : (
-            <button
-              className={getClassName(outOfStock)}
-              disabled={outOfStock}
-              onClick={() =>
-                cartDispatch({
-                  type: "ADD_TO_CART",
-                  payload: product
-                })
-              }
-            >
-              <img
-                src="https://therightfit.netlify.app/assets/cart-white.png"
-                alt="cart"
-              />{" "}
-              {outOfStock ? "Out of Stock" : "Add to Cart"}
-            </button>
-          )}
+        <button 
+          className={`${outOfStock ? `strik-through` : `cursor`} button btn-primary btn-icon d-flex btn-margin gap action-btn  align-center justify-center`} 
+          disabled={outOfStock}
+          onClick={inCart ? removeFromCartHandler : addToCartHandler}
+          >
+            <img src={inCart ? "https://uilight.netlify.app/assets/delete.png" : "https://therightfit.netlify.app/assets/cart-white.png"} 
+                 alt={inCart ? "delete" : "cart"} 
+            />
+            {inCart && !outOfStock ? "Remove From Cart" : !inCart && !outOfStock ? "Add to Cart" : outOfStock ? "Out of Stock" : ""}
+          </button>
         </div>
       </div>
     </div>

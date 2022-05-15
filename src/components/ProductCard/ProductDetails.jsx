@@ -1,9 +1,11 @@
-import "./ProductDetails.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart, useAuth, useFilter } from "../../context/";
+import { isInwishlist, isInCart } from "../../productUtilities";
+import "./ProductDetails.css";
 
 export const ProductDetails = ({ sproduct }) => {
   const {
+    _id,
     imgUrl,
     title,
     description,
@@ -14,28 +16,43 @@ export const ProductDetails = ({ sproduct }) => {
     outOfStock
   } = sproduct;
 
+  const navigate = useNavigate();
+
   const {
     state: { myWishlist },
-    productDispatch
+    addToWishlist
   } = useFilter();
-
-  const getClassName = (outOfStock) => {
-    if (outOfStock) {
-      return "button btn-primary btn-icon d-flex strik-through btn-margin gap align-center";
-    } else {
-      return "button btn-primary btn-icon d-flex cursor btn-margin gap align-center";
-     
-    }
-  };
 
   const {
     cartState: { cart },
-    cartDispatch
+    addToCart
   } = useCart();
 
-  const {
-    state: { userName, isLoggedIn }
-  } = useAuth();
+  const { eToken } = useAuth();
+
+  const isWishlisted = isInwishlist(myWishlist, _id);
+  const inCart = isInCart(cart, _id);
+
+  const addToCartHandler = () => {
+    if (eToken){
+      addToCart(sproduct)
+    }else{
+      navigate("/login")
+    }
+  }
+
+  const goToCart = () => {
+      navigate("/cart")
+  }
+
+  const addToWishlistHandler = () => {
+    if (eToken){
+      addToWishlist(sproduct)
+    }else{
+      navigate("/login")
+    }
+  }
+
 
   return (
     <div class="top-margin d-flex gap-4 justify-center">
@@ -78,61 +95,26 @@ export const ProductDetails = ({ sproduct }) => {
           </div>
         </div>
         <div class="cta d-flex gap">
-          {cart.some((prod) => prod.id === sproduct.id) && isLoggedIn ? (
-            <button
-              className="button btn-primary btn-icon d-flex cursor btn-margin gap align-center"
-              onClick={() =>
-                cartDispatch({
-                  type: "REMOVE_FROM_CART",
-                  payload: sproduct
-                })
-              }
+        <button 
+          className={`${outOfStock ? `strik-through` : `cursor`} button btn-primary btn-icon d-flex btn-margin gap align-center`} 
+          disabled={outOfStock}
+          onClick={inCart ? goToCart : addToCartHandler}
+          > 
+            {inCart ? <span class="material-icons-outlined">
+                        shopping_cart_checkout
+                      </span> : <span class="material-icons-outlined">
+                          shopping_cart
+                      </span>}
+            {inCart && !outOfStock ? "Go to Cart" : !inCart && !outOfStock ? "Add to Cart" : outOfStock ? "Out of Stock" : ""}
+          </button>
+          <button
+              className="button btn-outline-primary btn-icon d-flex align-center gap cursor btn-margin"
+              disabled={isWishlisted}
+              onClick={addToWishlistHandler}
+              
             >
-              <img
-                src="https://uilight.netlify.app/assets/delete.png"
-                alt="remove"
-              />
-              Remove From Cart
+              {isWishlisted ? "Wishlisted" : "Move to Wishlist"}
             </button>
-          ) : (
-            <button
-              className={getClassName(outOfStock)}
-              disabled={outOfStock}
-              onClick={() =>
-                cartDispatch({
-                  type: "ADD_TO_CART",
-                  payload: {
-                    product: sproduct,
-                    userName: userName
-                  }
-                })
-              }
-            >
-              <img
-                src="https://therightfit.netlify.app/assets/cart-white.png"
-                alt="cart"
-              />{" "}
-              {outOfStock ? "Out of Stock" : "Add to Cart"}
-            </button>
-          )}
-          {myWishlist.some((prod) => prod.id === sproduct.id) &&
-          isLoggedIn ? (
-            <button class="button btn-primary btn-icon d-flex align-center gap cursor btn-margin">
-              Added to Wishlist
-            </button>
-          ) : (
-            <button
-              class="button btn-secondary btn-icon d-flex align-center gap cursor btn-margin"
-              onClick={() =>
-                productDispatch({
-                  type: "WISHLIST",
-                  payload: { product: sproduct }
-                })
-              }
-            >
-              Move to Wishlist
-            </button>
-          )}
         </div>
       </div>
     </div>

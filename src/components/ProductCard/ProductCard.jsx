@@ -1,35 +1,52 @@
+import { Link, useNavigate } from "react-router-dom";
 import "./ProductCard.css";
 import { useFilter, useCart, useAuth } from "../../context";
-import { Link } from "react-router-dom";
+import { isInwishlist, isInCart } from "../../productUtilities";
 
 const ProductCard = ({ product }) => {
-  const {
-    state: { myWishlist },
-    productDispatch
-  } = useFilter();
-  const {
-    cartState: { cart },
-    cartDispatch
-  } = useCart();
+
+  const navigate = useNavigate();
 
   const {
-    state: { userName, isLoggedIn }
-  } = useAuth();
+    state: { myWishlist },
+    addToWishlist
+  } = useFilter();
+
+  const {
+    cartState: { cart },
+    addToCart, removeFromCart
+  } = useCart();
+
+  const { eToken } = useAuth();
 
   const { _id, imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, outOfStock, isFast
   } = product;
-  
-  const getClassName = (outOfStock) => {
-    if (outOfStock) {
-      const className =
-        "button btn-primary btn-icon d-flex strik-through btn-margin gap align-center";
-      return className;
-    } else {
-      const className =
-        "button btn-primary btn-icon d-flex cursor btn-margin gap align-center";
-      return className;
+
+  const isWishlisted = isInwishlist(myWishlist, _id);
+  const inCart = isInCart(cart, _id)
+
+  const addToCartHandler = () => {
+    if (eToken){
+      addToCart(product)
+    }else{
+      navigate("/login")
     }
-  };
+  }
+
+  const removeFromCartHandler = () => {
+    if(eToken){
+      removeFromCart(product)
+    }
+  }
+
+  const addToWishlistHandler = () => {
+    if (eToken){
+      addToWishlist(product)
+    }else{
+      navigate("/login")
+    }
+  }
+
 
   const getWishlistClass = () => {
     if (isLoggedIn) {
@@ -55,23 +72,9 @@ const ProductCard = ({ product }) => {
         )}
         <button
           className="badge-close cursor absolute fav-outline d-flex align-center justify-center"
-          onClick={() =>
-            productDispatch({
-              type: "WISHLIST",
-              payload: {
-                product: product,
-                userName: userName
-              }
-            })
-          }
+          onClick={addToWishlistHandler}
         >
-          {myWishlist.some((item) => item.id === product.id) ? (
-            <span className={getWishlistClass()}>
-              favorite
-            </span>
-          ) : (
-            <span className="material-icons-outlined">favorite</span>
-          )}
+          <span className={`${isWishlisted ? `wishlist-color` : ``} material-icons-outlined`}>favorite</span>
         </button>
       </div>
       <div className="card-details">
@@ -89,43 +92,16 @@ const ProductCard = ({ product }) => {
         </div>
         </Link>
         <div className="cta-btn">
-          {cart.some((item) => item.id === product.id) && isLoggedIn ? (
-            <button
-              className="button btn-primary btn-icon d-flex cursor btn-margin gap align-center"
-              onClick={() =>
-                cartDispatch({
-                  type: "REMOVE_FROM_CART",
-                  payload: product
-                })
-              }
-            >
-              <img
-                src="https://uilight.netlify.app/assets/delete.png"
-                alt="remove"
-              />
-              Remove From Cart
-            </button>
-          ) : (
-            <button
-              className={getClassName(outOfStock)}
-              disabled={outOfStock}
-              onClick={() =>
-                cartDispatch({
-                  type: "ADD_TO_CART",
-                  payload: {
-                    product: product,
-                    userName: userName
-                  }
-                })
-              }
-            >
-              <img
-                src="https://therightfit.netlify.app/assets/cart-white.png"
-                alt="cart"
-              />{" "}
-              {outOfStock ? "Out of Stock" : "Add to Cart"}
-            </button>
-          )}
+          <button 
+          className={`${outOfStock ? `strik-through` : `cursor`} button action-btn btn-primary btn-icon d-flex btn-margin gap align-center justify-center`} 
+          disabled={outOfStock}
+          onClick={inCart ? removeFromCartHandler : addToCartHandler}
+          >
+            <img src={inCart ? "https://uilight.netlify.app/assets/delete.png" : "https://therightfit.netlify.app/assets/cart-white.png"} 
+                 alt={inCart ? "delete" : "cart"} 
+            />
+            {inCart && !outOfStock ? "Remove From Cart" : !inCart && !outOfStock ? "Add to Cart" : outOfStock ? "Out of Stock" : ""}
+          </button>
         </div>
       </div>
     </div>
