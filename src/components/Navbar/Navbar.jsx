@@ -12,7 +12,7 @@ const Navbar = ({ route }) => {
   } = useCart();
 
   const {
-    credentials: { userName, },logOutHandler, eToken, euser
+    logOutHandler, eToken, euser
   } = useAuth();
 
   return (
@@ -92,7 +92,6 @@ const Navbar = ({ route }) => {
                 </div>}
                 
               </div>
-              Cart
             </Link>
           </li>
         </ul>
