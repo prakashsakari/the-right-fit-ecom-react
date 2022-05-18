@@ -1,7 +1,7 @@
-import { ProductCardHorizontal, FinalPrice, Navbar } from "../components";
-import { useCart } from "../context/cart-context";
+import { ProductCardHorizontal, FinalPrice, Navbar, Alert } from "../components";
+import { useCart, useAlert } from "../context";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 
 export const Cart = () => {
   const [route, setRoute] = useState();
@@ -13,9 +13,11 @@ export const Cart = () => {
   useEffect(() => {
     setRoute("cart");
   }, [route]);
+
+  const {alert} = useAlert();
   
   return (
-    <>
+    <Fragment>
       <Navbar route={route} />
       <main className="wishlist-page-container">
         <h2 className="text-center">My Cart</h2>
@@ -37,6 +39,7 @@ export const Cart = () => {
           </div>
         )}
       </main>
-    </>
+      {alert.open && <Alert />}
+    </Fragment>
   );
 };

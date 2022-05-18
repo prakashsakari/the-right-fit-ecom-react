@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useCart, useAuth, useFilter } from "../../context/";
+import { useCart, useAuth, useFilter, useAlert } from "../../context/";
 import { isInwishlist, isInCart } from "../../productUtilities";
 import "./ProductDetails.css";
 
@@ -30,12 +30,14 @@ export const ProductDetails = ({ sproduct }) => {
 
   const { eToken } = useAuth();
 
+  const { setAlert } = useAlert();
+
   const isWishlisted = isInwishlist(myWishlist, _id);
   const inCart = isInCart(cart, _id);
 
   const addToCartHandler = () => {
     if (eToken){
-      addToCart(sproduct)
+      addToCart(sproduct, setAlert)
     }else{
       navigate("/login")
     }
@@ -47,7 +49,7 @@ export const ProductDetails = ({ sproduct }) => {
 
   const addToWishlistHandler = () => {
     if (eToken){
-      addToWishlist(sproduct)
+      addToWishlist(sproduct, setAlert)
     }else{
       navigate("/login")
     }
@@ -58,9 +60,6 @@ export const ProductDetails = ({ sproduct }) => {
     <div class="top-margin d-flex gap-4 justify-center">
       <div class="image-container img-box">
         <img class="product-image" src={imgUrl} alt="product" />
-        <Link className="link-primary" to="/products">
-          Go to products page{" "}
-        </Link>
       </div>
       <div class="content-container content-box col-flex gap-1">
         <div class="product-details col-flex gap-1">
@@ -113,7 +112,7 @@ export const ProductDetails = ({ sproduct }) => {
               onClick={addToWishlistHandler}
               
             >
-              {isWishlisted ? "Wishlisted" : "Move to Wishlist"}
+              {isWishlisted ? "Wishlisted" : "Add to Wishlist"}
             </button>
         </div>
       </div>

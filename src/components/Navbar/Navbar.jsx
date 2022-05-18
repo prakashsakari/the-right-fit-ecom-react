@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useFilter, useCart, useAuth } from "../../context";
+import { useFilter, useCart, useAuth, useAlert } from "../../context";
 import "./Navbar.css";
 
 const Navbar = ({ route }) => {
@@ -14,6 +14,8 @@ const Navbar = ({ route }) => {
   const {
     logOutHandler, eToken, euser
   } = useAuth();
+
+  const {setAlert} = useAlert();
 
   return (
     <header className="heading d-flex grow1-shrink1-basisauto align-center fixed top-0 left-0">
@@ -60,7 +62,7 @@ const Navbar = ({ route }) => {
                         <button
                             to="/login"
                             class="cursor button btn-primary"
-                            onClick={() => logOutHandler()}>{eToken
+                            onClick={() => logOutHandler(setAlert)}>{eToken
                                 ? "Logout"
                                 : "Login"}</button>
                     </li>       

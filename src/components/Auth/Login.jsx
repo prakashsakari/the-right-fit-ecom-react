@@ -1,11 +1,12 @@
 import {Link} from "react-router-dom";
 import "./Auth.css"
-import {useAuth} from "../../context/auth-context";
+import {useAuth, useAlert} from "../../context";
 import {useState} from "react";
+
 export const AuthLogin = () => {
     const [passwordtype, setPasswordType] = useState("password");
     const {userLogin, credentials, credentialsDispatch} = useAuth();
-
+    const {setAlert} = useAlert();
     const handleEmailInputChange = (event) => {
         credentialsDispatch({type: "EMAIL", payload: event.target.value})
     }
@@ -19,13 +20,11 @@ export const AuthLogin = () => {
     }
 
     const handleTestCredentialsLogin = () => {
-        userLogin("adarshbalika@gmail.com", "adarshbalika")
+        userLogin("adarshbalika@gmail.com", "adarshbalika", setAlert)
     }
 
     const handleLoginClick = () => {
-        if (credentials.email !== "" && credentials.password !== "") {
-            userLogin(credentials.email, credentials.password)
-        }
+        userLogin(credentials.email, credentials.password, setAlert)
         credentialsDispatch({type: "CLEAR_LOGIN_CREDENTIALS"})
     }
 
