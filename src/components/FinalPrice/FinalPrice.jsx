@@ -1,5 +1,5 @@
 import "./FinalPrice.css";
-import { useCart } from "../../context/cart-context";
+import { useCart, useAlert } from "../../context";
 
 export const FinalPrice = () => {
   let {
@@ -9,8 +9,10 @@ export const FinalPrice = () => {
       totalItemPrice,
       discountedPrice,
       totalAmount
-    }
+    }, cartDispatch
   } = useCart();
+
+  const { setAlert } = useAlert();
 
   totalItemPrice = cart.reduce(
     (previousValue, currentValue) =>
@@ -27,6 +29,17 @@ export const FinalPrice = () => {
   discountedPrice = originalPrice - totalItemPrice;
 
   totalAmount = Math.abs(originalPrice - discountedPrice + deliveryCharge);
+
+  const placeOrderHandler = () => {
+    cartDispatch({
+      type: "CLEAR_CART",
+    })
+    setAlert({
+      open: true,
+      message: "Order placed successfully",
+      type: "success"
+    })
+  }
 
   return (
     <div className="total-price align-self">
@@ -52,7 +65,7 @@ export const FinalPrice = () => {
       <p className="discount-text">
         You will save Rs. {discountedPrice} on this order
       </p>
-      <button className="button btn-primary cursor btn-width">PLACE ORDER</button>
+      <button onClick={placeOrderHandler} className="button btn-primary cursor btn-width">PLACE ORDER</button>
     </div>
   );
 };
