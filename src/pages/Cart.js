@@ -1,11 +1,11 @@
 import { ProductCardHorizontal, FinalPrice, Navbar } from "../components";
 import { useCart } from "../context/cart-context";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export const Cart = () => {
   const [route, setRoute] = useState();
-
+  const navigate = useNavigate();
   const {
     cartState: { cart }
   } = useCart();
@@ -31,7 +31,9 @@ export const Cart = () => {
         ) : (
           <div className="text-center">
             <h2>Cart Empty</h2>
-            <Link to="/products">Click to add items to Cart</Link>
+            <button class="button btn-link-primary cursor" onClick={() => navigate("/products")}>
+              <span class="link-primary" href="#" target="_blank">Click to add items to Cart</span>
+            </button>
           </div>
         )}
       </main>

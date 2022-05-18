@@ -1,7 +1,7 @@
 import { Navbar, ProductCard,
   PriceRange, SortByPrice, Discount,
   FilterByStock, FilterByDelivery, ClearFilter,
-  FilterByCategory, FilterByRating} from "../components";
+  FilterByCategory, FilterByRating, Loader} from "../components";
 
 import { useFilter } from "../context/filter-product-context";
 
@@ -10,7 +10,7 @@ import { getfilteredProducts, getPriceSortedProducts,
   getFastDeliveryProducts, getCategoryFilterProducts,
   getProductsByRating, getProductsBySearch} from "../productUtilities";
 
-import {useState, useEffect} from "react";
+import {useState, useEffect, Fragment} from "react";
 
 import axios from "axios";
 
@@ -18,6 +18,7 @@ const Products = () => {
   const [route, setRoute] = useState();
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { state } = useFilter();
   const {
   minPrice,
@@ -35,6 +36,7 @@ const Products = () => {
           try{
               const {data : {products}} = await axios.get("/api/products")
               setProducts(products);
+              setIsLoading(false);
           }catch(error){
               setError(true);
           }
@@ -56,7 +58,8 @@ const Products = () => {
   const filterBySearch = getProductsBySearch(filterProducts, searchInput);
 
   return (
-    <div className="page">
+    <Fragment>
+      {isLoading ? <Loader /> : (<div className="page">
       <Navbar route={route} />
       {!error ? (
         <div className="d-flex">
@@ -73,16 +76,18 @@ const Products = () => {
         <main className="product-content d-flex gap-48px wrap">
           {filterBySearch.length > 0 ? (filterBySearch.map((product) => (
             <ProductCard product={product} key={product.id} />
-          ))) : <h2>{error}</h2>}
+          ))) : <span className="heading-3 no-item-messgae">No Items Found. Kindly Try something else.</span>}
         </main>
       </div>
       ) : (
         <main className="product-content d-flex gap-48px wrap">
-          <h2>Nothing to display</h2>
+          <span className="heading-3 no-item-messgae">Nothing to display</span>
         </main>
       )}
       
-    </div>
+    </div>)}
+    
+    </Fragment>
   );
 };
 

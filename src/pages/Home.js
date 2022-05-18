@@ -3,20 +3,27 @@ import {
   Banner,
   Category,
   NewArrivals,
-  Footer
+  Footer,
+  Loader
   } from "../components";
-  import { useEffect, useState } from "react";
+  import { useEffect, useState, Fragment } from "react";
   import "./Home.css";
   
   const Home = () => {
     const [route, setRoute] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsLoading(true), 500)
+  }, [])
 
   useEffect(() => {
     setRoute("home");
   }, [route]);
 
     return (
-      <div className="page">
+      <Fragment>
+        {!isLoading ? <Loader /> : (<div className="page">
         <Navbar route={route} />
         <main>
           <Category />
@@ -24,8 +31,9 @@ import {
           <NewArrivals />
           <Footer />
         </main>
-        
-      </div>
+      </div>)}
+      
+      </Fragment>
     );
   };
   
