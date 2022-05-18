@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
   }, [])
 
 
-  const userSignup = async (firstName, email, password) => {
+  const userSignup = async (firstName, email, password, setAlert) => {
       try {
           const {data: {createdUser, encodedToken}} = await axios.post("api/auth/signup", {
               email: email,
@@ -36,16 +36,28 @@ const AuthProvider = ({ children }) => {
           })
               localStorage.setItem("token", encodedToken);
               setEToken(encodedToken);
-              localStorage.setItem("user", createdUser);
+              localStorage.setItem("user", JSON.stringify(createdUser));
               setEUser(createdUser);
               navigate("/login");
+              setAlert({
+                open: true,
+                message: "Account Created Successfully",
+                type: "success"
+            })
           
       }catch(err){
           console.log(err);
+          if(err.response.status === 422){
+            setAlert({
+                open: true,
+                message: "User Already exists",
+                type: "error"
+            })
+        }
       }
   }
 
-  const userLogin = async (email, password) => {
+  const userLogin = async (email, password, setAlert) => {
       try {
           const {data : {foundUser, encodedToken}, status} = await axios.post("/api/auth/login", {
               email: email,
@@ -57,13 +69,23 @@ const AuthProvider = ({ children }) => {
               localStorage.setItem("user", JSON.stringify(foundUser));
               setEUser(JSON.parse(localStorage.getItem("user")).firstName);
               navigate(location?.state?.from?.pathname || "/", { replace: true });
+              setAlert({
+                open: true,
+                message: "Login Successful!",
+                type: "success"
+            })
           }
       }catch (err){
-          console.log("from context error - ", err);
+            console.log("from context error - ", err);
+            setAlert({
+                open: true,
+                message: "User Not Found",
+                type: "error"
+            })
       }
   }
 
-  const logOutHandler = () => {
+  const logOutHandler = (setAlert) => {
     if (eToken){
         setEToken("");
         setEUser("");
@@ -76,6 +98,11 @@ const AuthProvider = ({ children }) => {
         })
         setUserCart([]);
         navigate("/");
+        setAlert({
+            open: true,
+            message: "Logged Out Successfully",
+            type: "success"
+        })
     }else{
         navigate("/login");
     }

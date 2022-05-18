@@ -16,7 +16,7 @@ const FilterProvider = ({ children }) => {
     searchInput: ""
   });
 
-  const addToWishlist = async (product) => {
+  const addToWishlist = async (product, setAlert) => {
     try {
       const {data: {wishlist}} = await axios.post("/api/user/wishlist", {product}, {
         headers: {authorization: localStorage.getItem("token")}
@@ -26,12 +26,22 @@ const FilterProvider = ({ children }) => {
           type: "WISHLIST",
           payload: product
         })
+        setAlert({
+          open: true,
+          message: "Item Added To Wishlist",
+          type: "success"
+        })
     }catch(err){
       console.log(err)
+      setAlert({
+        open: true,
+        message: "Something went wrong",
+        type: "error"
+      })
     }
   }
 
-  const removeFromWishlist = async (product) => {
+  const removeFromWishlist = async (product, setAlert) => {
     try {
       const {data: {wishlist}} = await axios.delete(`api/user/wishlist/${product._id}`, 
       {
@@ -42,9 +52,18 @@ const FilterProvider = ({ children }) => {
         type: "REMOVE_FROM_WISHLIST",
         payload: product._id
       })
-      
+      setAlert({
+        open: true,
+        message: "Item Removed From Wishlist",
+        type: "success"
+      })
     }catch(err){
       console.log(err)
+      setAlert({
+        open: true,
+        message: "Something went wrong",
+        type: "error"
+      })
     }
   }
 

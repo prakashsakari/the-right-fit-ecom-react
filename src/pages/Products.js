@@ -1,9 +1,9 @@
 import { Navbar, ProductCard,
   PriceRange, SortByPrice, Discount,
   FilterByStock, FilterByDelivery, ClearFilter,
-  FilterByCategory, FilterByRating, Loader} from "../components";
+  FilterByCategory, FilterByRating, Loader, Alert} from "../components";
 
-import { useFilter } from "../context/filter-product-context";
+import { useFilter, useAlert } from "../context";
 
 import { getfilteredProducts, getPriceSortedProducts,
   getDiscountedProducts, getProductsByStock,
@@ -20,6 +20,7 @@ const Products = () => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { state } = useFilter();
+  const {alert} = useAlert();
   const {
   minPrice,
   sortBy,
@@ -84,9 +85,8 @@ const Products = () => {
           <span className="heading-3 no-item-messgae">Nothing to display</span>
         </main>
       )}
-      
+      {alert.open && <Alert />}
     </div>)}
-    
     </Fragment>
   );
 };

@@ -1,18 +1,20 @@
-import { Navbar, WishlistProduct } from "../components";
-import { useFilter } from "../context/filter-product-context";
+import { Navbar, WishlistProduct, Alert } from "../components";
+import { useFilter, useAlert } from "../context";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./Wishlist.css";
 
 export const Wishlist = () => {
   const { state: { myWishlist }} = useFilter();
   const [route, setRoute] = useState();
   const navigate = useNavigate();
+  const {alert} = useAlert();
+
   useEffect(() => {
     setRoute("wishlist");
   }, [route]);
   return (
-    <>
+    <Fragment>
       <Navbar route={route} />
       {myWishlist.length > 0 ? (
         <>
@@ -31,6 +33,7 @@ export const Wishlist = () => {
             </button>
         </main>
       )}
-    </>
+      {alert.open && <Alert />}
+    </Fragment>
   );
 };

@@ -4,15 +4,17 @@ import {
   Category,
   NewArrivals,
   Footer,
-  Loader
+  Loader,
+  Alert
   } from "../components";
   import { useEffect, useState, Fragment } from "react";
+  import {useAlert} from "../context";
   import "./Home.css";
   
   const Home = () => {
     const [route, setRoute] = useState();
     const [isLoading, setIsLoading] = useState(false);
-
+    const {alert} = useAlert();
   useEffect(() => {
     setTimeout(() => setIsLoading(true), 500)
   }, [])
@@ -26,6 +28,7 @@ import {
         {!isLoading ? <Loader /> : (<div className="page">
         <Navbar route={route} />
         <main>
+        {alert.open && <Alert />}
           <Category />
           <Banner />
           <NewArrivals />
