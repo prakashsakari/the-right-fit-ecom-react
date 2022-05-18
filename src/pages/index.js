@@ -5,3 +5,4 @@ export {Cart} from "./Cart";
 export {Login} from "./Login";
 export {SignUp} from "./Signup"
 export {SingleProduct} from "./SingleProduct";
+export { Error } from "./404/404";

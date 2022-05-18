@@ -19,3 +19,4 @@ export { AuthLogin } from "./Auth/Login";
 export { AuthSignUp } from "./Auth/SignUp";
 export { ProductDetails } from "./ProductCard/ProductDetails";
 export { RequiresAuth } from "./RequiresAuth/RequiresAuth";
+export { Loader } from "./Loader/Loader";
