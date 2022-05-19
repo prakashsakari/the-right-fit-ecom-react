@@ -29,7 +29,7 @@ export const ProductCardHorizontal = ({ product }) => {
 
   const updateQuantityHandler = (updateValue) => {
     if (eToken){
-      updateProductQuantity(product, updateValue)
+      updateProductQuantity(product, updateValue, setAlert)
     }
   }
 

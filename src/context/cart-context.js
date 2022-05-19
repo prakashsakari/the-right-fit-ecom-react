@@ -33,7 +33,6 @@ const CartProvider = ({ children }) => {
         })
       
     }catch(err){
-      console.log(err)
       setAlert({
         open: true,
         message: "Something went wrong",
@@ -43,7 +42,6 @@ const CartProvider = ({ children }) => {
   }
 
   const removeFromCart = async (product, setAlert) => {
-    console.log(product);
     try {
       const {data: {cart}} = await axios.delete(`api/user/cart/${product._id}`, 
       {headers : {authorization : localStorage.getItem("token")}})
@@ -58,7 +56,6 @@ const CartProvider = ({ children }) => {
         type: "success"
       })
     }catch(err){
-      console.log(err)
       setAlert({
         open: true,
         message: "Something went wrong",
@@ -67,7 +64,7 @@ const CartProvider = ({ children }) => {
     }
   }
 
-  const updateProductQuantity = async (product, updateValue) => {
+  const updateProductQuantity = async (product, updateValue, setAlert) => {
     try {
       const updateQuantity = await axios.post(`api/user/cart/${product._id}`, {
         action : {
@@ -82,7 +79,11 @@ const CartProvider = ({ children }) => {
         payload: product._id
       })
     }catch (err){
-      console.log(err)
+      setAlert({
+        open: true,
+        message: "Something went wrong",
+        type: "error"
+      })
     }
   }
 
