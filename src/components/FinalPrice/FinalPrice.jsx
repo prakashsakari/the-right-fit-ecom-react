@@ -1,5 +1,6 @@
 import "./FinalPrice.css";
-import { useCart } from "../../context/cart-context";
+import { useCart, useAlert } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 export const FinalPrice = () => {
   let {
@@ -11,6 +12,9 @@ export const FinalPrice = () => {
       totalAmount
     }
   } = useCart();
+
+  const { setAlert } = useAlert();
+  const navigate = useNavigate();
 
   totalItemPrice = cart.reduce(
     (previousValue, currentValue) =>
@@ -26,7 +30,11 @@ export const FinalPrice = () => {
 
   discountedPrice = originalPrice - totalItemPrice;
 
-  totalAmount = Math.abs(totalItemPrice - discountedPrice + deliveryCharge);
+  totalAmount = Math.abs(originalPrice - discountedPrice + deliveryCharge);
+
+  const placeOrderHandler = () => {
+    navigate("/address");
+  }
 
   return (
     <div className="total-price gutter-all-16 align-self">
