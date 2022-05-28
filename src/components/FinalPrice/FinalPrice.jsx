@@ -35,15 +35,6 @@ export const FinalPrice = () => {
   const placeOrderHandler = () => {
 
     navigate("/address");
-    cartDispatch({
-      type: "CLEAR_CART",
-    })
-    setAlert({
-      open: true,
-      message: "Order placed successfully",
-      type: "success"
-    })
-
   }
 
   return (
