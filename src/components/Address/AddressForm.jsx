@@ -97,7 +97,7 @@ export const AddressForm = ({ setIsFormOpen }) => {
         </button>
         <button
           className="button btn-outline-primary cursor address-btn"
-          // onClick={handleAddAddress}
+          
         >
           Add Address
         </button>
