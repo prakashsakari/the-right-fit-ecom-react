@@ -1,5 +1,10 @@
 import "./FinalPrice.css";
+<<<<<<< HEAD
 import { useCart } from "../../context/cart-context";
+=======
+import { useCart, useAlert } from "../../context";
+import { useNavigate } from "react-router-dom";
+>>>>>>> 9c10e09 (added address and payment integration)
 
 export const FinalPrice = () => {
   let {
@@ -12,6 +17,12 @@ export const FinalPrice = () => {
     }
   } = useCart();
 
+<<<<<<< HEAD
+=======
+  const { setAlert } = useAlert();
+  const navigate = useNavigate();
+
+>>>>>>> 9c10e09 (added address and payment integration)
   totalItemPrice = cart.reduce(
     (previousValue, currentValue) =>
       previousValue + Number(currentValue.newPrice) * currentValue.itemCount,
@@ -26,7 +37,26 @@ export const FinalPrice = () => {
 
   discountedPrice = originalPrice - totalItemPrice;
 
+<<<<<<< HEAD
   totalAmount = Math.abs(totalItemPrice - discountedPrice + deliveryCharge);
+=======
+  totalAmount = Math.abs(originalPrice - discountedPrice + deliveryCharge);
+
+  // const placeOrderHandler = () => {
+  //   cartDispatch({
+  //     type: "CLEAR_CART",
+  //   })
+  //   setAlert({
+  //     open: true,
+  //     message: "Order placed successfully",
+  //     type: "success"
+  //   })
+  // }
+
+  const placeOrderHandler = () => {
+    navigate("/address");
+  }
+>>>>>>> 9c10e09 (added address and payment integration)
 
   return (
     <div className="total-price gutter-all-16 align-self">

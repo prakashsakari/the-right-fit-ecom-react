@@ -17,4 +17,14 @@ export {FinalPrice} from "./FinalPrice/FinalPrice";
 export {ProductCardHorizontal} from "./ProductCard/ProductCardHorizontal";
 export { AuthLogin } from "./Auth/Login";
 export { AuthSignUp } from "./Auth/SignUp";
+<<<<<<< HEAD
 export { ProductDetails } from "./ProductCard/ProductDetails";
+=======
+export { ProductDetails } from "./ProductCard/ProductDetails";
+export { RequiresAuth } from "./RequiresAuth/RequiresAuth";
+export { Loader } from "./Loader/Loader";
+export { Alert } from "./Alert/Alert";
+export { AddressForm } from "./Address/AddressForm";
+export { DisplayAddress } from "./Address/DisplayAddress";
+export { Checkout } from "./Checkout/Checkout";
+>>>>>>> 9c10e09 (added address and payment integration)
