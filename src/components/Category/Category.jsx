@@ -1,11 +1,15 @@
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useFilter } from "../../context/";
+
 const Category = () => {
 
   const [categories, setCategories] = useState([]);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const {productDispatch} = useFilter();
 
   useEffect(() => {
     (async () => {
@@ -24,7 +28,13 @@ const Category = () => {
         {categories.map(({ imgUrl, alt, category }) => {
           return (
             <>
-              <Link className="link relative effect" to="/products">
+              <div className="relative effect link" onClick={() => {
+                productDispatch({
+                  type: "CATEGORY",
+                  payload: category
+                })
+                navigate("/products")
+              }}>
 
                 <div className="category category-men">
                   <img
@@ -38,7 +48,7 @@ const Category = () => {
                     {category}
                   </div>
                 </div>
-              </Link>
+              </div>
             </>
           );
         })}

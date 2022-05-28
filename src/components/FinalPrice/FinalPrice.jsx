@@ -10,7 +10,7 @@ export const FinalPrice = () => {
       totalItemPrice,
       discountedPrice,
       totalAmount
-    }
+    }, cartDispatch
   } = useCart();
 
   const { setAlert } = useAlert();
@@ -33,16 +33,26 @@ export const FinalPrice = () => {
   totalAmount = Math.abs(originalPrice - discountedPrice + deliveryCharge);
 
   const placeOrderHandler = () => {
+
     navigate("/address");
+    cartDispatch({
+      type: "CLEAR_CART",
+    })
+    setAlert({
+      open: true,
+      message: "Order placed successfully",
+      type: "success"
+    })
+
   }
 
   return (
-    <div className="total-price gutter-all-16 align-self">
+    <div className="total-price align-self">
       <h3 className="cart-title">Price Details</h3>
       <div className="price-distribution d-flex direction-column gap">
         <div className="items-purchased d-flex align-center">
           <p>Price ({cart.length} items)</p>
-          <p className="mg-left">Rs. {totalItemPrice}</p>
+          <p className="mg-left">Rs. {originalPrice}</p>
         </div>
         <div className="discount-rate d-flex align-center">
           <p>Discount</p>
@@ -60,7 +70,7 @@ export const FinalPrice = () => {
       <p className="discount-text">
         You will save Rs. {discountedPrice} on this order
       </p>
-      <button className="button btn-primary cursor btn-width">PLACE ORDER</button>
+      <button onClick={placeOrderHandler} className="button btn-primary cursor btn-width">PLACE ORDER</button>
     </div>
   );
 };

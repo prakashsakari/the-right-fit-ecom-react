@@ -9,8 +9,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="products" element={<Products />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<RequiresAuth><Wishlist /></RequiresAuth> } />
+        <Route path="/cart" element={<RequiresAuth><Cart /></RequiresAuth> } />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/product/:productId" element={<SingleProduct />} />
