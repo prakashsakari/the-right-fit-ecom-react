@@ -1,27 +1,29 @@
 import "./Auth.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from "../../context/auth-context";
+import { useAuth, useAlert } from "../../context/";
 
 export const AuthSignUp = () => {
   const [passwordtype, setPasswordType] = useState("password");
   const [confirmPasswordtype, setConfirmPasswordType] = useState("password");
+  
+  const {setAlert} = useAlert();
 
   const {
-    state: { password, confirmPassword, isEmailValid, email, display, name },
-    passwordDispatch
+    credentials: { userPassword, userConfirmPassword, isEmailValid, userEmail, display, userName, userLastName },
+    credentialsDispatch, userSignup
   } = useAuth();
 
   const getClassName = (display) =>
     display === "none" ? "pass-check-text display-n" : "pass-check-text";
 
-  const getButtonState = (password, confirmPassword) => {
-    return password !== confirmPassword ||
-      password.length < 6 ||
-      password === "" ||
-      !password.match("^[A-Za-z0-9]+$") ||
-      email === "" ||
-      name === ""
+  const getButtonState = (userPassword, userConfirmPassword) => {
+    return userPassword !== userConfirmPassword ||
+      userPassword.length < 6 ||
+      userPassword === "" ||
+      !userPassword.match("^[A-Za-z0-9]+$") ||
+      userEmail === "" ||
+      userName === ""
       ? true
       : false;
   };
@@ -36,8 +38,9 @@ export const AuthSignUp = () => {
             type="text"
             className="form-input lh-ls"
             placeholder="Prakash"
+            value={userName}
             onChange={(e) =>
-              passwordDispatch({
+              credentialsDispatch({
                 type: "FIRST_NAME",
                 payload: e.target.value
               })
@@ -50,6 +53,13 @@ export const AuthSignUp = () => {
             type="text"
             className="form-input lh-ls"
             placeholder="Sakari"
+            value={userLastName}
+            onChange={(e) =>
+                credentialsDispatch({
+                  type: "LAST_NAME",
+                  payload: e.target.value
+                })
+              }
           />
         </div>
 
@@ -59,17 +69,18 @@ export const AuthSignUp = () => {
             type="email"
             className="form-input lh-ls"
             placeholder="name@example.com"
+            value={userEmail}
             onChange={(e) =>
-              passwordDispatch({
+              credentialsDispatch({
                 type: "EMAIL_CHECK",
                 payload: e.target.value
               })
             }
           />
         </div>
-        {!isEmailValid && email !== "" && (
+        {!isEmailValid && userEmail !== "" && (
           <p className="pass-check-text">
-            Email Id should be of type name@example.com
+            Please enter a valid Email-id e.g name@example.com
           </p>
         )}
 
@@ -79,8 +90,9 @@ export const AuthSignUp = () => {
             type={passwordtype}
             className="form-input lh-ls"
             placeholder="*********"
+            value={userPassword}
             onChange={(e) =>
-              passwordDispatch({
+              credentialsDispatch({
                 type: "PASSWORD_CHECK",
                 payload: e.target.value
               })
@@ -101,7 +113,7 @@ export const AuthSignUp = () => {
         </div>
         <div className={getClassName(display)}>
           <span>Password must contain atleast 6 characters</span>
-          <span>Password cannot contain any special character</span>
+          <span>Password cannot contain any special character(@,_,#,..)</span>
         </div>
         <div className="form-container relative">
           <label className="form-label">Confirm Password</label>
@@ -109,8 +121,9 @@ export const AuthSignUp = () => {
             type={confirmPasswordtype}
             className="form-input lh-ls"
             placeholder="*********"
+            value={userConfirmPassword}
             onChange={(e) =>
-              passwordDispatch({
+              credentialsDispatch({
                 type: "CONFIRM_PASS_CHECK",
                 payload: e.target.value
               })
@@ -129,7 +142,7 @@ export const AuthSignUp = () => {
             </span>
           </button>
         </div>
-        {password !== confirmPassword && confirmPassword !== "" && (
+        {userPassword !== userConfirmPassword && userConfirmPassword !== "" && (
           <p className="pass-check-text">Passwords don't match</p>
         )}
 
@@ -141,14 +154,19 @@ export const AuthSignUp = () => {
         </div>
 
         <div className="cta">
-          <Link to="/login">
             <button
-              disabled={getButtonState(password, confirmPassword)}
+              disabled={getButtonState(userPassword, userConfirmPassword)}
               className="login-btn button btn-primary cursor btn-margin sign-up-btn"
+              onClick={() => {
+                  userSignup(userName, userEmail, userPassword, setAlert)
+                  credentialsDispatch({
+                      type: "CLEAR_INPUT"
+                  })
+                }}
             >
               Create New Account
             </button>
-          </Link>
+          
           <div className="create-account d-flex align-center justify-center">
             <Link to="/login">
               <button className="button cursor">

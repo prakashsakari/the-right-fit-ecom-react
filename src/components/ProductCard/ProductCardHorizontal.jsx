@@ -1,15 +1,42 @@
 import "./ProductCardHorizontal.css";
-import { useFilter, useCart } from "../../context";
+import { useFilter, useCart, useAuth, useAlert } from "../../context";
+import { isInwishlist } from "../../productUtilities";
 
 export const ProductCardHorizontal = ({ product }) => {
-  const { id, imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, isFast, itemCount
+  const { _id, imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, isFast, itemCount
   } = product;
-  const { cartDispatch } = useCart();
-  const { productDispatch } = useFilter();
+  const { removeFromCart, updateProductQuantity } = useCart();
+  const { state: {myWishlist}, addToWishlist } = useFilter();
+
+  const {eToken} = useAuth();
+
+  const {setAlert} = useAlert();
+
+  const isWishlisted = isInwishlist(myWishlist, _id);
+
+  const removeFromCartHandler = () => {
+    if (eToken){
+      removeFromCart(product, setAlert)
+    }
+  }
+
+  const moveToWishlistHandler = () => {
+    if (eToken){
+      addToWishlist(product, setAlert)
+      removeFromCart(product)
+    }
+  }
+
+  const updateQuantityHandler = (updateValue) => {
+    if (eToken){
+      updateProductQuantity(product, updateValue, setAlert)
+    }
+  }
+
   return (
     <div className="card-horizontal d-flex shadow card-size flex-start">
       <div className="card-hori-image-container card-size-hori relative">
-        <img className="card-image d-block" src={imgUrl} alt="shoes" />
+        <img className="card-image-hori d-block" src={imgUrl} alt="shoes" />
         {isTrending && (
           <small className="c-badge bg-primary absolute left-0 top-2">
             Trending
@@ -21,7 +48,7 @@ export const ProductCardHorizontal = ({ product }) => {
           </small>
         )}
       </div>
-      <div className="card-details d-flex direction-column">
+      <div className="card-details horizontal-card d-flex direction-column">
         <div className="card-title">{title}</div>
         <div className="card-description">
           <p className="card-des">{productCategory}</p>
@@ -37,12 +64,7 @@ export const ProductCardHorizontal = ({ product }) => {
             <button
               disabled={itemCount === 1}
               className="count"
-              onClick={() =>
-                cartDispatch({
-                  type: "DECREASE_QUANTITY",
-                  payload: id
-                })
-              }
+              onClick={() => updateQuantityHandler("decrement")}
             >
               {" "}
               -{" "}
@@ -50,44 +72,28 @@ export const ProductCardHorizontal = ({ product }) => {
             <span className="count-value">{itemCount}</span>
             <button
               class="count"
-              onClick={() =>
-                cartDispatch({
-                  type: "INCREASE_QUANTITY",
-                  payload: id
-                })
-              }
+              onClick={() => updateQuantityHandler("increment")}
             >
               +
             </button>
           </div>
         </div>
         <div className="cta-btn-container d-flex gap">
-          <div className="cta-btn">
             <button
               className="button btn-primary btn-icon d-flex align-center gap cursor btn-margin"
-              onClick={() =>
-                cartDispatch({
-                  type: "REMOVE_FROM_CART",
-                  payload: product
-                })
-              }
+              onClick={removeFromCartHandler}
             >
               Remove From Cart
             </button>
-          </div>
-          <div className="cta-btn">
+
             <button
               className="button btn-outline-primary btn-icon d-flex align-center gap cursor btn-margin"
-              onClick={() =>
-                productDispatch({
-                  type: "WISHLIST",
-                  payload: product
-                })
-              }
+              disabled={isWishlisted}
+              onClick={moveToWishlistHandler}
+              
             >
-              Move to Wishlist
+              {isWishlisted ? "Wishlisted" : "Move to Wishlist"}
             </button>
-          </div>
         </div>
       </div>
     </div>

@@ -3,19 +3,19 @@ export const cartReducer = (cartState, { type, payload }) => {
       case "ADD_TO_CART":
         return {
           ...cartState,
-          cart: [...cartState.cart, { ...payload.product, itemCount: 1 }],
+          cart: [...cartState.cart, { ...payload, itemCount: 1 }],
         };
       case "REMOVE_FROM_CART":
         return {
           ...cartState,
-          cart: cartState.cart.filter((product) => product.id !== payload.id)
+          cart: cartState.cart.filter(({_id}) => _id !== payload)
         };
   
       case "INCREASE_QUANTITY":
         return {
           ...cartState,
           cart: cartState.cart.map((product) =>
-            product.id === payload
+            product._id === payload
               ? { ...product, itemCount: product.itemCount + 1 }
               : product
           )
@@ -25,11 +25,17 @@ export const cartReducer = (cartState, { type, payload }) => {
         return {
           ...cartState,
           cart: cartState.cart.map((product) =>
-            product.id === payload
+            product._id === payload
               ? { ...product, itemCount: product.itemCount - 1 }
               : product
           )
         };
+
+      case "CLEAR_CART":
+        return {
+          ...cartState,
+          cart: []
+        }
       default:
         return cartState;
     }
