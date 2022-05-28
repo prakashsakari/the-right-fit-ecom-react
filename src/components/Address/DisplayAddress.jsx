@@ -1,11 +1,14 @@
+import {useState} from "react";
 import "./AddressForm.css";
 import { useAddress } from "../../context";
+
 export const DisplayAddress = ({ addresses, isFormOpen, setIsFormOpen }) => {
   const {
     userDetails,
     setUserDetails,
     newAddress,
-    setNewAddress
+    setNewAddress,
+    setSelected
   } = useAddress();
 
   const { _id, name, address, number, landmark } = addresses;
@@ -27,7 +30,7 @@ export const DisplayAddress = ({ addresses, isFormOpen, setIsFormOpen }) => {
         : { ...newAdd, isChecked: false }
     );
     setNewAddress(updatedAddressess);
-    console.log(newAddress);
+    setSelected(selected => !selected);
   };
 
   return (

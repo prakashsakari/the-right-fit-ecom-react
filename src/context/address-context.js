@@ -13,9 +13,11 @@ const AddressProvider = ({ children }) => {
 
   const [newAddress, setNewAddress] = useState([]);
 
+  const [selected, setSelected] = useState(false);
+
   return (
     <AddressContext.Provider
-      value={{ userDetails, setUserDetails, newAddress, setNewAddress }}
+      value={{ userDetails, setUserDetails, newAddress, setNewAddress, selected, setSelected }}
     >
       {children}
     </AddressContext.Provider>
