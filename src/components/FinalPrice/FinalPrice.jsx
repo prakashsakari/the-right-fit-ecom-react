@@ -1,5 +1,6 @@
 import "./FinalPrice.css";
 import { useCart, useAlert } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 export const FinalPrice = () => {
   let {
@@ -13,6 +14,7 @@ export const FinalPrice = () => {
   } = useCart();
 
   const { setAlert } = useAlert();
+  const navigate = useNavigate();
 
   totalItemPrice = cart.reduce(
     (previousValue, currentValue) =>
@@ -30,15 +32,19 @@ export const FinalPrice = () => {
 
   totalAmount = Math.abs(originalPrice - discountedPrice + deliveryCharge);
 
+  // const placeOrderHandler = () => {
+  //   cartDispatch({
+  //     type: "CLEAR_CART",
+  //   })
+  //   setAlert({
+  //     open: true,
+  //     message: "Order placed successfully",
+  //     type: "success"
+  //   })
+  // }
+
   const placeOrderHandler = () => {
-    cartDispatch({
-      type: "CLEAR_CART",
-    })
-    setAlert({
-      open: true,
-      message: "Order placed successfully",
-      type: "success"
-    })
+    navigate("/address");
   }
 
   return (
