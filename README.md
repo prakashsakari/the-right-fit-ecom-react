@@ -85,11 +85,15 @@ Start the server
   npm start
 ```
 
+## GIF
+![The-Right-Fit-Store-_1_](https://user-images.githubusercontent.com/80476561/169080096-b9263b35-a40f-472b-a3ac-04a25ec048a3.gif)
+
 
 ## Screenshot
-![ecom-1](https://user-images.githubusercontent.com/80476561/162252611-6ffe723f-b2ef-491d-bf6a-927f2e795c45.png)
-![ecom-2](https://user-images.githubusercontent.com/80476561/162252626-1f88b6b0-05c2-4cec-a747-3fad7bee82f1.png)
-![ecom-3](https://user-images.githubusercontent.com/80476561/162252634-4376f442-914c-4138-903a-15af72a3c106.png)
+![img1](https://user-images.githubusercontent.com/80476561/169081864-911b9a88-11c8-444d-9687-77e8fbc45193.png)
+![img2](https://user-images.githubusercontent.com/80476561/169081873-fd3ff58d-83fd-438d-a23b-724f240a3d83.png)
+![img3](https://user-images.githubusercontent.com/80476561/169081876-dcbb324f-c383-41cd-bf0b-4dd2abca397d.png)
+
 
 
 

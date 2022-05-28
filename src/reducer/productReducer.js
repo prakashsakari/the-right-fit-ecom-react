@@ -1,5 +1,10 @@
 export const productReducer = (state, { type, payload }) => {
     switch (type) {
+      case "SEARCH_INPUT":
+      return {
+        ...state,
+        searchInput: payload
+      };
       case "RANGE":
         return {
           ...state,
@@ -54,15 +59,21 @@ export const productReducer = (state, { type, payload }) => {
       case "WISHLIST":
         return {
           ...state,
-          myWishlist: !state.myWishlist.some((prod) => prod.id === payload.product.id)
-              ? [...state.myWishlist, payload.product]
+          myWishlist: !state.myWishlist.some((prod) => prod._id === payload._id)
+              ? [...state.myWishlist, payload]
               : state.myWishlist,
         };
       case "REMOVE_FROM_WISHLIST":
         return {
           ...state,
-          myWishlist: state.myWishlist.filter((product) => product.id !== payload.id)
+          myWishlist: state.myWishlist.filter(({_id}) => _id !== payload)
         };
+      
+      case "CLEAR_WISHLIST":
+        return {
+          ...state,
+          myWishlist: []
+        }
   
       default:
         return state;
