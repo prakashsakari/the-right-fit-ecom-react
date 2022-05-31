@@ -33,14 +33,11 @@ import {
           <Banner />
           <NewArrivals />
         </main>
-<<<<<<< HEAD
         <Footer />
       </div>
-=======
-      </div>)}
+      )}
       
       </Fragment>
->>>>>>> 675cb5c99ae1b4dd4a0a3c6ca100eea34bffb876
     );
   };
   
