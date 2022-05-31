@@ -66,6 +66,7 @@ export const AddressForm = ({ setIsFormOpen }) => {
         <input
           className="form-input lh-ls add-input"
           required
+          type="number"
           value={number}
           placeholder="10 digit number"
           onChange={(e) =>
@@ -97,7 +98,6 @@ export const AddressForm = ({ setIsFormOpen }) => {
         </button>
         <button
           className="button btn-outline-primary cursor address-btn"
-          // onClick={handleAddAddress}
         >
           Add Address
         </button>

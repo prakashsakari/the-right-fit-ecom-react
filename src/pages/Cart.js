@@ -19,9 +19,10 @@ export const Cart = () => {
   return (
     <Fragment>
       <Navbar route={route} />
-      <main className="wishlist-page-container">
-        <h2 className="text-center">My Cart</h2>
+      <main className="margin-top wishlist-page-container">
         {cart.length > 0 ? (
+          <>
+          <h2 className="text-center">My Cart</h2>
           <div className="d-flex gap-48px wrap justify-center">
             <div className="flex-col">
               {cart.map((product) => (
@@ -30,6 +31,7 @@ export const Cart = () => {
             </div>
             <FinalPrice />
           </div>
+          </>
         ) : (
           <div className="text-center">
             <h2>Cart Empty</h2>
