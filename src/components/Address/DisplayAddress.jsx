@@ -1,6 +1,7 @@
 import {useState} from "react";
 import "./AddressForm.css";
 import { useAddress } from "../../context";
+import {isAddressSelected} from "../../productUtilities";
 
 export const DisplayAddress = ({ addresses, isFormOpen, setIsFormOpen }) => {
   const {
@@ -11,7 +12,7 @@ export const DisplayAddress = ({ addresses, isFormOpen, setIsFormOpen }) => {
     setSelected
   } = useAddress();
 
-  const { _id, name, address, number, landmark } = addresses;
+  const { _id, name, address, number, landmark, isChecked } = addresses;
 
   const handleEditClick = (addressId) => {
     setIsFormOpen((isFormOpen) => !isFormOpen);
@@ -23,14 +24,19 @@ export const DisplayAddress = ({ addresses, isFormOpen, setIsFormOpen }) => {
     setNewAddress(newAddress.filter(({ _id }) => _id !== addressId));
   };
 
-  const handleChange = (addressId) => {
-    const updatedAddressess = newAddress.map((newAdd) =>
+  const handleChange = (event, addressId) => {
+    if (event.target.checked){
+      const updatedAddressess = newAddress.map((newAdd) =>
       newAdd._id === addressId
         ? { ...newAdd, isChecked: !newAdd.isChecked }
         : { ...newAdd, isChecked: false }
-    );
-    setNewAddress(updatedAddressess);
-    setSelected(selected => !selected);
+      );
+      setNewAddress(updatedAddressess);
+      setSelected(true);
+    }else{
+      setSelected(false);
+    }
+    
   };
 
   return (
@@ -41,7 +47,8 @@ export const DisplayAddress = ({ addresses, isFormOpen, setIsFormOpen }) => {
           type="radio"
           name="select"
           className="check-box"
-          onChange={() => handleChange(_id)}
+          checked={isAddressSelected(newAddress, _id)}
+          onChange={(event) => handleChange(event, _id)}
         />
         <span>Name - {name}</span>
         <span> | </span>
