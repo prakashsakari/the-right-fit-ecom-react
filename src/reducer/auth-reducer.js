@@ -50,7 +50,9 @@ export const credentialsReducer = (credentials, {type, payload}) => {
               userConfirmPassword: "",
               userEmail: "",
               userPassword: "",
-              userLastName: ""
+              userLastName: "",
+              email: "",
+              password: ""
           }
 
       case "CLEAR_LOGIN_CREDENTIALS":

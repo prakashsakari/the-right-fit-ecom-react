@@ -1,11 +1,12 @@
 import {Link} from "react-router-dom";
 import "./Auth.css"
-import {useAuth} from "../../context/auth-context";
+import {useAuth, useAlert} from "../../context";
 import {useState} from "react";
+
 export const AuthLogin = () => {
     const [passwordtype, setPasswordType] = useState("password");
     const {userLogin, credentials, credentialsDispatch} = useAuth();
-
+    const {setAlert} = useAlert();
     const handleEmailInputChange = (event) => {
         credentialsDispatch({type: "EMAIL", payload: event.target.value})
     }
@@ -19,13 +20,11 @@ export const AuthLogin = () => {
     }
 
     const handleTestCredentialsLogin = () => {
-        userLogin("adarshbalika@gmail.com", "adarshbalika")
+        userLogin("prakash@gmail.com", "prakashsakari", setAlert)
     }
 
     const handleLoginClick = () => {
-        if (credentials.email !== "" && credentials.password !== "") {
-            userLogin(credentials.email, credentials.password)
-        }
+        userLogin(credentials.email, credentials.password, setAlert)
         credentialsDispatch({type: "CLEAR_LOGIN_CREDENTIALS"})
     }
 
@@ -62,16 +61,6 @@ export const AuthLogin = () => {
                         </span>
                     </button>
                 </div>
-
-                <div className="remember">
-                    <input type="checkbox" className="check-box"/>
-                    <label className="padding-all-8 label-remember">Remember me</label>
-                    <button className="button btn-link-primary cursor mg-left">
-                        <Link className="link-primary" to="/login">
-                            Forgot your Password?
-                        </Link>
-                    </button>
-                </div>
                 <div className="cta">
                     <button
                         className="login-btn button btn-primary cursor btn-margin sign-up-btn"
@@ -79,7 +68,7 @@ export const AuthLogin = () => {
                         Login
                     </button>
                     <button
-                        className="login-btn button btn-primary cursor btn-margin sign-up-btn"
+                        className="login-btn button btn-outline-primary btn-margin sign-up-btn"
                         onClick={handleTestCredentialsLogin}>
                         Login with Test Credentials
                     </button>

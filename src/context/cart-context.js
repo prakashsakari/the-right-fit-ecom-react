@@ -14,7 +14,7 @@ const CartProvider = ({ children }) => {
   });
   const [userCart, setUserCart] = useState([]);
 
-  const addToCart = async (product) => {
+  const addToCart = async (product, setAlert) => {
     try {
       const {data: {cart}} = await axios.post("/api/user/cart", {product},
       {
@@ -26,14 +26,22 @@ const CartProvider = ({ children }) => {
           type: "ADD_TO_CART",
           payload: product
         })
+        setAlert({
+          open: true,
+          message: "Item Added To Cart",
+          type: "success"
+        })
       
     }catch(err){
-      console.log(err)
+      setAlert({
+        open: true,
+        message: "Something went wrong",
+        type: "error"
+      })
     }
   }
 
-  const removeFromCart = async (product) => {
-    console.log(product);
+  const removeFromCart = async (product, setAlert) => {
     try {
       const {data: {cart}} = await axios.delete(`api/user/cart/${product._id}`, 
       {headers : {authorization : localStorage.getItem("token")}})
@@ -42,12 +50,21 @@ const CartProvider = ({ children }) => {
         type: "REMOVE_FROM_CART",
         payload: product._id
       })
+      setAlert({
+        open: true,
+        message: "Item Removed From Cart",
+        type: "success"
+      })
     }catch(err){
-      console.log(err)
+      setAlert({
+        open: true,
+        message: "Something went wrong",
+        type: "error"
+      })
     }
   }
 
-  const updateProductQuantity = async (product, updateValue) => {
+  const updateProductQuantity = async (product, updateValue, setAlert) => {
     try {
       const updateQuantity = await axios.post(`api/user/cart/${product._id}`, {
         action : {
@@ -62,7 +79,11 @@ const CartProvider = ({ children }) => {
         payload: product._id
       })
     }catch (err){
-      console.log(err)
+      setAlert({
+        open: true,
+        message: "Something went wrong",
+        type: "error"
+      })
     }
   }
 

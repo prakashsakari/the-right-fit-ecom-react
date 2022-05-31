@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { debounce } from "lodash";
-import { useFilter, useCart, useAuth } from "../../context";
+import { useFilter, useCart, useAuth, useAlert } from "../../context";
 import "./Navbar.css";
 
 const Navbar = ({ route }) => {
@@ -13,7 +13,7 @@ const Navbar = ({ route }) => {
   } = useCart();
 
   const {
-    credentials: { userName, },logOutHandler, eToken, euser
+    logOutHandler, eToken, euser
   } = useAuth();
 
   const handleSearch = debounce((e) =>
@@ -21,6 +21,9 @@ const Navbar = ({ route }) => {
     type: "SEARCH_INPUT",
     payload: e.target.value
   }), 500)
+
+  const {setAlert} = useAlert();
+
 
   return (
     <header className="heading d-flex grow1-shrink1-basisauto align-center fixed top-0 left-0">
@@ -42,7 +45,6 @@ const Navbar = ({ route }) => {
           className="search-box padding-all-8"
           type="text"
           placeholder="Search"
-          // value={searchInput}
           onChange={handleSearch}
         />
         <img
@@ -62,7 +64,7 @@ const Navbar = ({ route }) => {
                         <button
                             to="/login"
                             class="cursor button btn-primary"
-                            onClick={() => logOutHandler()}>{eToken
+                            onClick={() => logOutHandler(setAlert)}>{eToken
                                 ? "Logout"
                                 : "Login"}</button>
                     </li>       
@@ -94,7 +96,6 @@ const Navbar = ({ route }) => {
                 </div>}
                 
               </div>
-              Cart
             </Link>
           </li>
         </ul>

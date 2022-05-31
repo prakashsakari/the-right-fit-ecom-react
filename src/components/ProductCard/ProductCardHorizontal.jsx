@@ -1,5 +1,5 @@
 import "./ProductCardHorizontal.css";
-import { useFilter, useCart, useAuth } from "../../context";
+import { useFilter, useCart, useAuth, useAlert } from "../../context";
 import { isInwishlist } from "../../productUtilities";
 
 export const ProductCardHorizontal = ({ product }) => {
@@ -10,24 +10,26 @@ export const ProductCardHorizontal = ({ product }) => {
 
   const {eToken} = useAuth();
 
+  const {setAlert} = useAlert();
+
   const isWishlisted = isInwishlist(myWishlist, _id);
 
   const removeFromCartHandler = () => {
     if (eToken){
-      removeFromCart(product)
+      removeFromCart(product, setAlert)
     }
   }
 
   const moveToWishlistHandler = () => {
     if (eToken){
-      addToWishlist(product)
+      addToWishlist(product, setAlert)
       removeFromCart(product)
     }
   }
 
   const updateQuantityHandler = (updateValue) => {
     if (eToken){
-      updateProductQuantity(product, updateValue)
+      updateProductQuantity(product, updateValue, setAlert)
     }
   }
 
