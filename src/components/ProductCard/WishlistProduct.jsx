@@ -1,5 +1,5 @@
 import "./ProductCard.css";
-import { useFilter, useCart, useAuth} from "../../context";
+import { useFilter, useCart, useAuth, useAlert} from "../../context";
 import { isInCart } from "../../productUtilities";
 
 
@@ -14,6 +14,8 @@ const WishlistProduct = ({ product }) => {
   } = useCart();
 
   const {eToken} = useAuth();
+
+  const { setAlert } = useAlert();
 
   const {
     _id,
@@ -32,13 +34,13 @@ const WishlistProduct = ({ product }) => {
 
   const removeFromWishlistHandler = () => {
     if(eToken){
-      removeFromWishlist(product);
+      removeFromWishlist(product, setAlert);
     }
   }
 
   const addToCartHandler = () => {
     if (eToken){
-      addToCart(product)
+      addToCart(product, setAlert)
     }else{
       navigate("/login")
     }
@@ -46,7 +48,7 @@ const WishlistProduct = ({ product }) => {
 
   const removeFromCartHandler = () => {
     if(eToken){
-      removeFromCart(product)
+      removeFromCart(product, setAlert)
     }
   }
 

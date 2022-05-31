@@ -1,18 +1,20 @@
-import { Navbar, WishlistProduct } from "../components";
-import { useFilter } from "../context/filter-product-context";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Navbar, WishlistProduct, Alert } from "../components";
+import { useFilter, useAlert } from "../context";
+import { useNavigate } from "react-router-dom";
+import { Fragment, useEffect, useState } from "react";
 import "./Wishlist.css";
 
 export const Wishlist = () => {
   const { state: { myWishlist }} = useFilter();
   const [route, setRoute] = useState();
+  const navigate = useNavigate();
+  const {alert} = useAlert();
 
   useEffect(() => {
     setRoute("wishlist");
   }, [route]);
   return (
-    <>
+    <Fragment>
       <Navbar route={route} />
       {myWishlist.length > 0 ? (
         <>
@@ -24,11 +26,14 @@ export const Wishlist = () => {
           </main>
         </>
       ) : (
-        <main className="margin-top flex-col">
-          <h2>No Items in Wishlist</h2>
-          <Link to="/products">Click to add items to Wishlist</Link>
+        <main className="margin-top d-flex direction-column align-center">
+          <h2>Wishlist Empty</h2>
+          <button class="button btn-link-primary cursor" onClick={() => navigate("/products")}>
+              <span  class="link-primary" href="#" target="_blank">Click to add items to Wishlist</span>
+            </button>
         </main>
       )}
-    </>
+      {alert.open && <Alert />}
+    </Fragment>
   );
 };

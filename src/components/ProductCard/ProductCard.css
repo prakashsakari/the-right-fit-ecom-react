@@ -28,3 +28,9 @@
 .top-2 {
   top: 1.7rem;
 }
+
+.no-item-messgae {
+  text-align: center;
+  margin-top: 4rem;
+  margin-left: 4rem;
+}
