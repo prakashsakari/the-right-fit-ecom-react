@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { debounce } from "lodash";
 import { useFilter, useCart, useAuth, useAlert } from "../../context";
 import "./Navbar.css";
 
@@ -15,7 +16,14 @@ const Navbar = ({ route }) => {
     logOutHandler, eToken, euser
   } = useAuth();
 
+  const handleSearch = debounce((e) =>
+  productDispatch({
+    type: "SEARCH_INPUT",
+    payload: e.target.value
+  }), 500)
+
   const {setAlert} = useAlert();
+
 
   return (
     <header className="heading d-flex grow1-shrink1-basisauto align-center fixed top-0 left-0">
@@ -37,13 +45,7 @@ const Navbar = ({ route }) => {
           className="search-box padding-all-8"
           type="text"
           placeholder="Search"
-          value={searchInput}
-          onChange={(e) =>
-            productDispatch({
-              type: "SEARCH_INPUT",
-              payload: e.target.value
-            })
-          }
+          onChange={handleSearch}
         />
         <img
           src="https://therightfit.netlify.app/assets/outline_search_black_24dp.png"
