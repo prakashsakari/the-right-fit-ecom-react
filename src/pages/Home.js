@@ -22,9 +22,8 @@ import {
           <Category />
           <Banner />
           <NewArrivals />
-          <Footer />
         </main>
-        
+        <Footer />
       </div>
     );
   };
