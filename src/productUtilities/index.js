@@ -7,3 +7,5 @@ export { getProductsByRating } from "./filter-by-rating";
 export { getProductsByStock } from "./filter-by-stock";
 export { isInwishlist } from "./wishlist";
 export { isInCart } from "./cart";
+export { getProductsBySearch } from "./filter-by-search";
+
