@@ -14,7 +14,7 @@ export const AddressForm = ({ setIsFormOpen }) => {
     setUserDetails({
       ...userDetails,
       name: "Prakash Sakari",
-      number: "01234567890",
+      number: "9876543210",
       address:
         "004 B Wing Apex Tower, Kalina Santacruz (E), Mumbai 400029, MH, IN",
       landmark: "Kalina Market",
@@ -66,8 +66,9 @@ export const AddressForm = ({ setIsFormOpen }) => {
         <input
           className="form-input lh-ls add-input"
           required
-          type="number"
+          type="text"
           value={number}
+          maxLength="10"
           placeholder="10 digit number"
           onChange={(e) =>
             setUserDetails({ ...userDetails, number: e.target.value })
@@ -91,13 +92,13 @@ export const AddressForm = ({ setIsFormOpen }) => {
           }
         />
         <button
-          className="button btn-primary cursor address-btn"
+          className="button btn-outline-primary address-btn"
           onClick={handleDummyAddress}
         >
           Add Dummy Address
         </button>
         <button
-          className="button btn-outline-primary cursor address-btn"
+          className="button btn-primary cursor address-btn"
         >
           Add Address
         </button>

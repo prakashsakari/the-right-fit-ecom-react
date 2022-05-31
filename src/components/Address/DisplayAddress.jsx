@@ -45,7 +45,7 @@ export const DisplayAddress = ({ addresses, isFormOpen, setIsFormOpen }) => {
         />
         <span>Name - {name}</span>
         <span> | </span>
-        <span>Ph No - +{number}</span>
+        <span>Ph No - +91 {number}</span>
       </div>
       <div className="address-details d-flex direction-column gap-8px">
         <span>Address - {address}</span>
