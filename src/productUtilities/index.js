@@ -8,4 +8,4 @@ export { getProductsByStock } from "./filter-by-stock";
 export { isInwishlist } from "./wishlist";
 export { isInCart } from "./cart";
 export { getProductsBySearch } from "./filter-by-search";
-
+export { isAddressSelected } from "./isAddressSelected";
