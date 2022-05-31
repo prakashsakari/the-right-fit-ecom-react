@@ -1,11 +1,13 @@
 import "./Auth.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from "../../context/auth-context";
+import { useAuth, useAlert } from "../../context/";
 
 export const AuthSignUp = () => {
   const [passwordtype, setPasswordType] = useState("password");
   const [confirmPasswordtype, setConfirmPasswordType] = useState("password");
+  
+  const {setAlert} = useAlert();
 
   const {
     credentials: { userPassword, userConfirmPassword, isEmailValid, userEmail, display, userName, userLastName },
@@ -156,7 +158,7 @@ export const AuthSignUp = () => {
               disabled={getButtonState(userPassword, userConfirmPassword)}
               className="login-btn button btn-primary cursor btn-margin sign-up-btn"
               onClick={() => {
-                  userSignup(userName, userEmail, userPassword)
+                  userSignup(userName, userEmail, userPassword, setAlert)
                   credentialsDispatch({
                       type: "CLEAR_INPUT"
                   })

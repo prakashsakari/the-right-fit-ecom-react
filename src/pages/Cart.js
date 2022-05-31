@@ -1,11 +1,11 @@
-import { ProductCardHorizontal, FinalPrice, Navbar } from "../components";
-import { useCart } from "../context/cart-context";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { ProductCardHorizontal, FinalPrice, Navbar, Alert } from "../components";
+import { useCart, useAlert } from "../context";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState, Fragment } from "react";
 
 export const Cart = () => {
   const [route, setRoute] = useState();
-
+  const navigate = useNavigate();
   const {
     cartState: { cart }
   } = useCart();
@@ -13,13 +13,16 @@ export const Cart = () => {
   useEffect(() => {
     setRoute("cart");
   }, [route]);
+
+  const {alert} = useAlert();
   
   return (
-    <>
+    <Fragment>
       <Navbar route={route} />
-      <main className="wishlist-page-container">
-        <h2 className="text-center">My Cart</h2>
+      <main className="margin-top wishlist-page-container">
         {cart.length > 0 ? (
+          <>
+          <h2 className="text-center">My Cart</h2>
           <div className="d-flex gap-48px wrap justify-center">
             <div className="flex-col">
               {cart.map((product) => (
@@ -28,13 +31,17 @@ export const Cart = () => {
             </div>
             <FinalPrice />
           </div>
+          </>
         ) : (
           <div className="text-center">
             <h2>Cart Empty</h2>
-            <Link to="/products">Click to add items to Cart</Link>
+            <button class="button btn-link-primary cursor" onClick={() => navigate("/products")}>
+              <span class="link-primary" href="#" target="_blank">Click to add items to Cart</span>
+            </button>
           </div>
         )}
       </main>
-    </>
+      {alert.open && <Alert />}
+    </Fragment>
   );
 };

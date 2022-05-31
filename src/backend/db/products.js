@@ -1,14 +1,35 @@
 import { v4 as uuid } from "uuid";
+import product1 from "../../assets/shoes-final.jpg"
+import product2 from "../../assets/product2.jpg"
+import product3 from "../../assets/product3.jpg"
+import product4 from "../../assets/product4.jpg"
+import product5 from "../../assets/product5.jpg"
+import product6 from "../../assets/product6.jpg"
+import product7 from "../../assets/product7.jpg"
+import product8 from "../../assets/product8.jpg"
+import product9 from "../../assets/product9.jpg"
+import product10 from "../../assets/product10.jpg"
+import product11 from "../../assets/product11.jpg"
+import product12 from "../../assets/product12.jpg"
+import product13 from "../../assets/product13.jpg"
+import product14 from "../../assets/product14.jpg"
+import product15 from "../../assets/product15.jpg"
+import product16 from "../../assets/product16.jpg"
+import product17 from "../../assets/product17.jpg"
+import product18 from "../../assets/product18.jpg"
+import product19 from "../../assets/product19.jpg"
+import product20 from "../../assets/product20.jpg"
+import product21 from "../../assets/product21.jpg"
+import product22 from "../../assets/product22.jpg"
+import product23 from "../../assets/product23.jpg"
+import product24 from "../../assets/product24.jpg"
+import product25 from "../../assets/product25.jpg"
 
-/**
- * Product Database can be added here.
- * You can add products of your wish with different attributes
- * */
 
 export const products = [
   {
     _id: uuid(),
-    imgUrl: "https://therightfit.netlify.app/assets/shoes.jpg",
+    imgUrl: product1,
     description: "Mens Feather Weight White Orange Sneakers",
     isTrending: false,
     isFavourite: false,
@@ -24,8 +45,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl:
-      "https://rukminim2.flixcart.com/image/332/398/kthjy4w0/shoe/h/h/x/5-gug87-adidas-cblack-clelil-ftwwht-original-imag6tgyzy3tjf5v.jpeg?q=50",
+    imgUrl: product2,
     isTrending: true,
     description: "Womens Light Weight Black Addidas Running Shoes",
     isFavourite: false,
@@ -41,8 +61,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Nikko_black_sandal.jpg/800px-Nikko_black_sandal.jpg",
+    imgUrl: product3,
     isTrending: false,
     description: "Boys Black Sandals comfortable and durable",
     isFavourite: false,
@@ -58,7 +77,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://rukminim2.flixcart.com/image/714/857/jr83gy80/shoe/t/s/k/sx0131l-5-sparx-pinkblack-original-imafd2hgbs5dbpvx.jpeg?q=50",
+    imgUrl: product4,
     isTrending: true,
     description: "Womens Light Weight Pink Running Shoes",
     isFavourite: false,
@@ -74,7 +93,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/1f64924b-0da5-49fd-857a-533684e27b96/blazer-mid-77-little-kids-shoes-Bnnf4k.png",
+    imgUrl: product5,
     isTrending: false,
     description: "Premium Category Shoes for Girls",
     isFavourite: false,
@@ -90,8 +109,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl:
-      "https://www.converse.com/dw/image/v2/BCZC_PRD/on/demandware.static/-/Sites-cnv-master-catalog/default/dw72da6744/images/a_08/A01735C_A_08X1.jpg?sw=406",
+    imgUrl: product6,
     isTrending: true,
     description: "Boys Printed All Star Converse.",
     isFavourite: false,
@@ -107,8 +125,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl:
-      "https://cdn.lifestyleasia.com/wp-content/uploads/2019/08/20153351/6e03e37670a9089e01e24eeddc9eee8b.jpeg",
+    imgUrl: product7,
     isTrending: false,
     description: "Addidas Gym Shoes for Men Comfortable and Durable",
     isFavourite: false,
@@ -124,7 +141,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/81863d87-25de-4521-a419-6258ac8f5742/flex-experience-run-10-road-running-shoes-dw002X.png",
+    imgUrl: product8,
     isTrending: false,
     description: "Nike Running Shoes for Girls Comfortable and Light Weight",
     isFavourite: false,
@@ -140,7 +157,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/193257/01/sv01/fnd/IND/fmt/png/Enzo-2-Metal-Women's-Running-Shoes",
+    imgUrl: product9,
     isTrending: true,
     description: "Puma Funky Sneakers for Women Black and Gold",
     isFavourite: false,
@@ -156,7 +173,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    imgUrl: product10,
     isTrending: true,
     isFavourite: false,
     title: "Nike Collection",
@@ -171,7 +188,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    imgUrl: product11,
     isTrending: true,
     isFavourite: false,
     title: "Nike Sneaker Collection",
@@ -186,7 +203,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+    imgUrl: product12,
     isTrending: true,
     isFavourite: false,
     title: "Bata Collection",
@@ -201,7 +218,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1179&q=80",
+    imgUrl: product13,
     isTrending: true,
     isFavourite: false,
     title: "K-SWiss",
@@ -216,7 +233,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://images.unsplash.com/photo-1518049362265-d5b2a6467637?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=449&q=80",
+    imgUrl: product14,
     isTrending: true,
     isFavourite: false,
     title: "The Wedding Collection",
@@ -232,7 +249,7 @@ export const products = [
   // from here
   {
     _id: uuid(),
-    imgUrl: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80",
+    imgUrl: product15,
     isTrending: true,
     isFavourite: false,
     title: "NX-90 Collection",
@@ -247,7 +264,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://cdn.pixabay.com/photo/2018/12/17/23/39/baby-shoes-3881526_960_720.jpg",
+    imgUrl: product16,
     isTrending: true,
     isFavourite: false,
     title: "Eeneral",
@@ -262,7 +279,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://cdn.pixabay.com/photo/2017/06/15/15/55/rainbow-colors-2405766_960_720.jpg",
+    imgUrl: product17,
     isTrending: true,
     isFavourite: false,
     title: "The Girls Store",
@@ -277,7 +294,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://cdn.pixabay.com/photo/2018/01/23/18/21/winter-shoes-3102060_960_720.jpg",
+    imgUrl: product18,
     isTrending: true,
     isFavourite: false,
     title: "Bata Collection",
@@ -292,7 +309,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://cdn.pixabay.com/photo/2018/01/24/21/31/childrens-shoes-3104832_960_720.jpg",
+    imgUrl: product19,
     isTrending: true,
     isFavourite: false,
     title: "Bata Collection",
@@ -307,7 +324,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://cdn.pixabay.com/photo/2017/12/23/10/56/childrens-shoes-3035034_960_720.jpg",
+    imgUrl: product20,
     isTrending: true,
     isFavourite: false,
     title: "The Boys Store",
@@ -322,7 +339,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://cdn.pixabay.com/photo/2019/08/10/16/04/baby-shoes-4397235__340.jpg",
+    imgUrl: product21,
     isTrending: true,
     isFavourite: false,
     title: "Bata Collection",
@@ -337,7 +354,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://cdn.pixabay.com/photo/2014/02/15/19/27/shoes-266849__340.jpg",
+    imgUrl: product22,
     isTrending: true,
     isFavourite: false,
     title: "The Boys Store",
@@ -352,7 +369,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://images.unsplash.com/photo-1562183241-b937e95585b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80",
+    imgUrl: product23,
     isTrending: true,
     isFavourite: false,
     title: "Addidas Collection",
@@ -367,7 +384,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://images.unsplash.com/photo-1601924638867-3a6de6b7a500?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    imgUrl: product24,
     isTrending: true,
     isFavourite: false,
     title: "The Wild Collection",
@@ -382,7 +399,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    imgUrl: "https://images.unsplash.com/photo-1602033693387-3531914e7185?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fHNob2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    imgUrl: product25,
     isTrending: true,
     isFavourite: false,
     title: "Nike Collection",

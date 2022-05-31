@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./ProductCard.css";
-import { useFilter, useCart, useAuth } from "../../context";
+import { useFilter, useCart, useAuth, useAlert } from "../../context";
 import { isInwishlist, isInCart } from "../../productUtilities";
 
 const ProductCard = ({ product }) => {
@@ -19,6 +19,8 @@ const ProductCard = ({ product }) => {
 
   const { eToken } = useAuth();
 
+  const { setAlert } = useAlert();
+
   const { _id, imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, outOfStock, isFast
   } = product;
 
@@ -27,7 +29,7 @@ const ProductCard = ({ product }) => {
 
   const addToCartHandler = () => {
     if (eToken){
-      addToCart(product)
+      addToCart(product, setAlert)
     }else{
       navigate("/login")
     }
@@ -35,26 +37,18 @@ const ProductCard = ({ product }) => {
 
   const removeFromCartHandler = () => {
     if(eToken){
-      removeFromCart(product)
+      removeFromCart(product, setAlert)
     }
   }
 
   const addToWishlistHandler = () => {
     if (eToken){
-      addToWishlist(product)
+      addToWishlist(product, setAlert)
     }else{
       navigate("/login")
     }
   }
 
-
-  const getWishlistClass = () => {
-    if (isLoggedIn) {
-      return "material-icons-outlined wishlist-color";
-    } else {
-      return "material-icons-outlined";
-    }
-  };
 
   return (
     <div className="card card-vertical d-flex direction-column relative">
