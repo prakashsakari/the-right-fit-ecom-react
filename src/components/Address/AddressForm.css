@@ -5,11 +5,16 @@
   .address-form {
     background-color: white;
     padding: 2rem;
+    width: 34vw;
   }
   
   .address-btn {
     width: 100%;
   }
+
+.add-input {
+  width: 100%;
+}
   
   .address-display-container {
     border: 1px solid var(--accent-color);
