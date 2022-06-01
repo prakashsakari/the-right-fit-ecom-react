@@ -39,7 +39,7 @@ const Navbar = ({ route }) => {
           </Link>
         </h1>
       </div>
-      {route !== "home" && (
+      {route === "product" && (
         <div className="search-box-container relative">
         <input
           className="search-box padding-all-8"
