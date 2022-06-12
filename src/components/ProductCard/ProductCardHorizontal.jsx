@@ -54,8 +54,8 @@ export const ProductCardHorizontal = ({ product }) => {
           <p className="card-des">{productCategory}</p>
           <p className="card-price">
             Rs. {newPrice}
-            <span className="price-strike-through  padding-all-8">Rs. {oldPrice}</span>
-            <span className="discount padding-all-8">({discount}% OFF)</span>
+            <span className="price-strike-through  padding-all-8 font-light">Rs. {oldPrice}</span>
+            <span className="discount padding-all-8 font-light">({discount}% OFF)</span>
           </p>
         </div>
         <div className="quantity-container d-flex gap">

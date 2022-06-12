@@ -39,7 +39,7 @@ export const products = [
     oldPrice: 2499,
     discount: 67,
     outOfStock: false,
-    isFast: true,
+    isFast: false,
     itemCategory: "men",
     itemRating: 4.8
   },
@@ -55,7 +55,7 @@ export const products = [
     oldPrice: 1499,
     discount: 75,
     outOfStock: true,
-    isFast: true,
+    isFast: false,
     itemCategory: "women",
     itemRating: 3.9
   },
@@ -78,7 +78,7 @@ export const products = [
   {
     _id: uuid(),
     imgUrl: product4,
-    isTrending: true,
+    isTrending: false,
     description: "Womens Light Weight Pink Running Shoes",
     isFavourite: false,
     title: "Sparx",
@@ -87,7 +87,7 @@ export const products = [
     oldPrice: 3499,
     discount: 27,
     outOfStock: false,
-    isFast: true,
+    isFast: false,
     itemCategory: "women",
     itemRating: 1.1
   },
@@ -110,7 +110,7 @@ export const products = [
   {
     _id: uuid(),
     imgUrl: product6,
-    isTrending: true,
+    isTrending: false,
     description: "Boys Printed All Star Converse.",
     isFavourite: false,
     title: "All Star",
@@ -151,14 +151,14 @@ export const products = [
     oldPrice: 3499,
     discount: 44,
     outOfStock: true,
-    isFast: true,
+    isFast: false,
     itemCategory: "girls",
     itemRating: 4.2
   },
   {
     _id: uuid(),
     imgUrl: product9,
-    isTrending: true,
+    isTrending: false,
     description: "Puma Funky Sneakers for Women Black and Gold",
     isFavourite: false,
     title: "Puma",
@@ -167,14 +167,15 @@ export const products = [
     oldPrice: 4499,
     discount: 39,
     outOfStock: false,
-    isFast: false,
+    isFast: true,
     itemCategory: "women",
-    itemRating: 4.5
+    itemRating: 3.5
   },
   {
     _id: uuid(),
     imgUrl: product10,
-    isTrending: true,
+    isTrending: false,
+    description: "Men Red Running Shoes for everyday use.",
     isFavourite: false,
     title: "Nike Collection",
     productCategory: "Men Running Shoes",
@@ -182,14 +183,15 @@ export const products = [
     oldPrice: 3499,
     discount: 53,
     outOfStock: false,
-    isFast: false,
+    isFast: true,
     itemCategory: "men",
-    itemRating: 4.7
+    itemRating: 2.7
   },
   {
     _id: uuid(),
     imgUrl: product11,
-    isTrending: true,
+    isTrending: false,
+    description: "Look stylish with this cool funky sneakers that changes colors",
     isFavourite: false,
     title: "Nike Sneaker Collection",
     productCategory: "Women Sneakers",
@@ -204,7 +206,8 @@ export const products = [
   {
     _id: uuid(),
     imgUrl: product12,
-    isTrending: true,
+    isTrending: false,
+    description: "Look stylish with this amazing heels from Bata",
     isFavourite: false,
     title: "Bata Collection",
     productCategory: "Women Heels",
@@ -214,12 +217,13 @@ export const products = [
     outOfStock: false,
     isFast: false,
     itemCategory: "women",
-    itemRating: 4.0
+    itemRating: 4.1
   },
   {
     _id: uuid(),
     imgUrl: product13,
     isTrending: true,
+    description: "Look dapper with this cool and comfortable K-Swiss sneakers",
     isFavourite: false,
     title: "K-SWiss",
     productCategory: "Men Sneakers",
@@ -227,30 +231,31 @@ export const products = [
     oldPrice: 3999,
     discount: 21,
     outOfStock: false,
-    isFast: true,
+    isFast: false,
     itemCategory: "men",
     itemRating: 4.9
   },
   {
     _id: uuid(),
     imgUrl: product14,
-    isTrending: true,
+    isTrending: false,
+    description: "Get wedding ready with this beautiful pair of heels",
     isFavourite: false,
     title: "The Wedding Collection",
     productCategory: "Women Heels",
-    newPrice: 494,
+    newPrice: 675,
     oldPrice: 1499,
-    discount: 67,
+    discount: 55,
     outOfStock: false,
     isFast: false,
     itemCategory: "women",
     itemRating: 4.5
   },
-  // from here
   {
     _id: uuid(),
     imgUrl: product15,
-    isTrending: true,
+    isTrending: false,
+    description: "Latest collection from NX-90. Pink Sneakers for Men",
     isFavourite: false,
     title: "NX-90 Collection",
     productCategory: "Men Sneakers",
@@ -258,7 +263,7 @@ export const products = [
     oldPrice: 4499,
     discount: 20,
     outOfStock: false,
-    isFast: true,
+    isFast: false,
     itemCategory: "men",
     itemRating: 4.5
   },
@@ -266,6 +271,7 @@ export const products = [
     _id: uuid(),
     imgUrl: product16,
     isTrending: true,
+    description: "Comfortable and durable boys boots.",
     isFavourite: false,
     title: "Eeneral",
     productCategory: "Boys Boots",
@@ -281,6 +287,7 @@ export const products = [
     _id: uuid(),
     imgUrl: product17,
     isTrending: true,
+    description: "Mutli-color shoes for girls for everyday use",
     isFavourite: false,
     title: "The Girls Store",
     productCategory: "Girls Shoes",
@@ -295,22 +302,24 @@ export const products = [
   {
     _id: uuid(),
     imgUrl: product18,
-    isTrending: true,
+    isTrending: false,
+    description: "Pink color shoes, Winter collection for girls",
     isFavourite: false,
     title: "Bata Collection",
     productCategory: "Girls Winter Shoes",
-    newPrice: 494,
+    newPrice: 375,
     oldPrice: 1499,
-    discount: 67,
+    discount: 75,
     outOfStock: false,
     isFast: false,
     itemCategory: "girls",
-    itemRating: 4.5
+    itemRating: 1.5
   },
   {
     _id: uuid(),
     imgUrl: product19,
-    isTrending: true,
+    isTrending: false,
+    description: "Pink White shoes for girls for everyday use",
     isFavourite: false,
     title: "Bata Collection",
     productCategory: "Girls Shoes",
@@ -318,20 +327,21 @@ export const products = [
     oldPrice: 3999,
     discount: 21,
     outOfStock: false,
-    isFast: false,
+    isFast: true,
     itemCategory: "girls",
-    itemRating: 4.5
+    itemRating: 4.8
   },
   {
     _id: uuid(),
     imgUrl: product20,
-    isTrending: true,
+    isTrending: false,
+    description: "Trending Brown White shoes for boys for everyday use",
     isFavourite: false,
     title: "The Boys Store",
     productCategory: "Boys Shoes",
-    newPrice: 494,
+    newPrice: 449,
     oldPrice: 1499,
-    discount: 67,
+    discount: 70,
     outOfStock: false,
     isFast: false,
     itemCategory: "boys",
@@ -340,7 +350,8 @@ export const products = [
   {
     _id: uuid(),
     imgUrl: product21,
-    isTrending: true,
+    isTrending: false,
+    description: "Pink Blue shoes for girls for everyday use",
     isFavourite: false,
     title: "Bata Collection",
     productCategory: "Girls Shoes",
@@ -350,12 +361,13 @@ export const products = [
     outOfStock: false,
     isFast: false,
     itemCategory: "girls",
-    itemRating: 4.5
+    itemRating: 3.5
   },
   {
     _id: uuid(),
     imgUrl: product22,
-    isTrending: true,
+    isTrending: false,
+    description: "Trending Brown Boots for boys for everyday use",
     isFavourite: false,
     title: "The Boys Store",
     productCategory: "Boys Shoes",
@@ -363,20 +375,21 @@ export const products = [
     oldPrice: 3999,
     discount: 21,
     outOfStock: false,
-    isFast: true,
+    isFast: false,
     itemCategory: "boys",
-    itemRating: 3.0
+    itemRating: 3.2
   },
   {
     _id: uuid(),
     imgUrl: product23,
-    isTrending: true,
+    isTrending: false,
+    description: "Gray Running Shoes for Men by Addidas",
     isFavourite: false,
     title: "Addidas Collection",
     productCategory: "Mens Running Shoes",
-    newPrice: 494,
+    newPrice: 1124,
     oldPrice: 1499,
-    discount: 67,
+    discount: 25,
     outOfStock: false,
     isFast: false,
     itemCategory: "men",
@@ -385,7 +398,8 @@ export const products = [
   {
     _id: uuid(),
     imgUrl: product24,
-    isTrending: true,
+    isTrending: false,
+    description: "Leather Animal Skin Themed Shoes for Women",
     isFavourite: false,
     title: "The Wild Collection",
     productCategory: "Women Heels",
@@ -400,7 +414,8 @@ export const products = [
   {
     _id: uuid(),
     imgUrl: product25,
-    isTrending: true,
+    isTrending: false,
+    description: "Gray Black Sneakers for Men",
     isFavourite: false,
     title: "Nike Collection",
     productCategory: "Men Sneakers",
@@ -410,7 +425,7 @@ export const products = [
     outOfStock: true,
     isFast: false,
     itemCategory: "men",
-    itemRating: 3.5
+    itemRating: 1.5
   }
   
 ];
