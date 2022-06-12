@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 import menShoes from "../../assets/mens-shoes.jpg";
 import womenShoes from "../../assets/women-shoes-new.jpg";
 import girlShoes from "../../assets/girls-shoes.jpg";
-import boyShoes from "../../assets/boys-shoes.jpg";
+import boyShoes from "../../assets/boys-shoes1.jpg";
 
 const categories = [
   {
