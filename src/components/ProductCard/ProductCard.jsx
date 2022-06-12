@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
 
   const { setAlert } = useAlert();
 
-  const { _id, imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, outOfStock, isFast
+  const { _id, imgUrl, isTrending, title, productCategory, newPrice, oldPrice, discount, outOfStock, isFast, itemRating
   } = product;
 
   const isWishlisted = isInwishlist(myWishlist, _id);
@@ -35,9 +35,9 @@ const ProductCard = ({ product }) => {
     }
   }
 
-  const removeFromCartHandler = () => {
+  const goToCart = () => {
     if(eToken){
-      removeFromCart(product, setAlert)
+      navigate("/cart")
     }
   }
 
@@ -51,11 +51,11 @@ const ProductCard = ({ product }) => {
 
 
   return (
-    <div className="card card-vertical d-flex direction-column relative">
+    <div className="card card-vertical d-flex direction-column relative shadow">
       <div className="card-image-container relative">
         <img className="card-image" src={imgUrl} alt="card" />
         {isTrending && (
-          <small className="c-badge bg-primary absolute left-0 top-2">
+          <small className="c-badge bg-primary absolute left-0 top-1">
             Trending
           </small>
         )}
@@ -78,23 +78,28 @@ const ProductCard = ({ product }) => {
           <p className="card-des">{productCategory}</p>
           <p className="card-price">
             Rs. {newPrice}
-            <span className="price-strike-through padding-all-8">
+            <span className="price-strike-through padding-all-8 font-light">
               Rs. {oldPrice}
             </span>
-            <span className="discount padding-all-8">({discount}% OFF)</span>
+            <span className="discount padding-all-8 font-light">({discount}% OFF)</span>
           </p>
+          <p className="d-flex align-center">{itemRating} <span class="material-icons-outlined star">
+                star
+                </span></p>
         </div>
-        </Link>
+      </Link>
         <div className="cta-btn">
           <button 
           className={`${outOfStock ? `strik-through` : `cursor`} button action-btn btn-primary btn-icon d-flex btn-margin gap align-center justify-center`} 
           disabled={outOfStock}
-          onClick={inCart ? removeFromCartHandler : addToCartHandler}
+          onClick={inCart ? goToCart : addToCartHandler}
           >
-            <img src={inCart ? "https://uilight.netlify.app/assets/delete.png" : "https://therightfit.netlify.app/assets/cart-white.png"} 
-                 alt={inCart ? "delete" : "cart"} 
-            />
-            {inCart && !outOfStock ? "Remove From Cart" : !inCart && !outOfStock ? "Add to Cart" : outOfStock ? "Out of Stock" : ""}
+            {inCart ? <span class="material-icons-outlined">
+                        shopping_cart_checkout
+                      </span> : <span class="material-icons-outlined">
+                          shopping_cart
+                      </span>}
+            {inCart && !outOfStock ? "Go To Cart" : !inCart && !outOfStock ? "Add to Cart" : outOfStock ? "Out of Stock" : ""}
           </button>
         </div>
       </div>

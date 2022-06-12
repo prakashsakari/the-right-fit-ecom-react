@@ -58,16 +58,18 @@ export const ProductDetails = ({ sproduct }) => {
 
   return (
     <div class="top-margin d-flex gap-4 justify-center">
-      <div class="image-container img-box">
+      <div class="img-box">
         <img class="product-image" src={imgUrl} alt="product" />
       </div>
       <div class="content-container content-box col-flex gap-1">
         <div class="product-details col-flex gap-1">
-          <h1>{title} Collections</h1>
+          <h1>{title}</h1>
           <h3>{description} </h3>
-          <div class="rating-box d-flex align-center gap-1">
+          <div class="d-flex align-center gap-1">
             <span class="rating-font">{itemRating}</span>{" "}
-            <span class="fa fa-star fa-1x"></span>
+            <span class="material-icons-outlined star">
+                star
+                </span>
           </div>
         </div>
         <div class="card-price ">

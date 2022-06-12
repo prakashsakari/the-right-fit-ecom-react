@@ -29,6 +29,8 @@ export const Address = () => {
     
   }
 
+  console.log("Address-", newAddress);
+
   return (
     <Fragment>
         {alert.open && <Alert />}

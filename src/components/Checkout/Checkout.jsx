@@ -31,7 +31,7 @@ export const Checkout = () => {
 
   discountedPrice = originalPrice - totalItemPrice;
 
-  totalAmount = totalItemPrice - discountedPrice + deliveryCharge;
+  totalAmount = Math.abs(originalPrice - discountedPrice + deliveryCharge);
 
 
   const loadScript = (src) => {
@@ -79,7 +79,7 @@ export const Checkout = () => {
       <div class="price-distribution d-flex direction-column gap">
         <div class="items-purchased d-flex align-center">
           <p>Price ({cart.length} items)</p>
-          <p class="mg-left">Rs. {totalItemPrice}</p>
+          <p class="mg-left">Rs. {originalPrice}</p>
         </div>
         <div class="discount-rate d-flex align-center">
           <p>Dsicount</p>

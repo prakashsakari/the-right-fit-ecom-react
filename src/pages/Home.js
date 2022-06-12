@@ -35,8 +35,7 @@ import {
         </main>
         <Footer />
       </div>
-)}
-      
+      )}
       </Fragment>
     );
   };

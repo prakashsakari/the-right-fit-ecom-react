@@ -16,6 +16,8 @@ export const CheckoutPage = () => {
     navigate("/address");
   };
 
+  console.log("Checkout-", finalAddress);
+
   return (
     <Fragment>
       <Navbar />

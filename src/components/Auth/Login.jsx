@@ -20,7 +20,7 @@ export const AuthLogin = () => {
     }
 
     const handleTestCredentialsLogin = () => {
-        userLogin("prakash@gmail.com", "prakashsakari")
+        userLogin("prakash@gmail.com", "prakashsakari", setAlert)
     }
 
     const handleLoginClick = () => {
@@ -61,16 +61,6 @@ export const AuthLogin = () => {
                         </span>
                     </button>
                 </div>
-
-                <div className="remember">
-                    <input type="checkbox" className="check-box"/>
-                    <label className="padding-all-8 label-remember">Remember me</label>
-                    <button className="button btn-link-primary cursor mg-left">
-                        <Link className="link-primary" to="/login">
-                            Forgot your Password?
-                        </Link>
-                    </button>
-                </div>
                 <div className="cta">
                     <button
                         className="login-btn button btn-primary cursor btn-margin sign-up-btn"
@@ -78,7 +68,7 @@ export const AuthLogin = () => {
                         Login
                     </button>
                     <button
-                        className="login-btn button btn-primary cursor btn-margin sign-up-btn"
+                        className="login-btn button btn-outline-primary btn-margin sign-up-btn"
                         onClick={handleTestCredentialsLogin}>
                         Login with Test Credentials
                     </button>

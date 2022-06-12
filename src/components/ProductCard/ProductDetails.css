@@ -16,7 +16,7 @@
   }
   
   .product-image {
-    max-width: 100%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
@@ -53,11 +53,13 @@
   .prod-price-strike-through {
     font-size: 1.25rem;
     text-decoration: line-through;
+    opacity: .65;
   }
   
   .prod-discount {
     font-size: 1.25rem;
     color: var(--primary-color);
+    opacity: .65;
   }
   
   .tax-txt {
