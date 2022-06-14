@@ -5,7 +5,8 @@ import {
   NewArrivals,
   Footer,
   Loader,
-  Alert
+  Alert,
+  Brands
   } from "../components";
   import { useEffect, useState, Fragment } from "react";
   import {useAlert} from "../context";
@@ -31,7 +32,7 @@ import {
         {alert.open && <Alert />}
           <Category />
           <Banner />
-          <NewArrivals />
+          <Brands />
         </main>
         <Footer />
       </div>
