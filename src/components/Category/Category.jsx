@@ -43,11 +43,11 @@ const Category = () => {
                     alt={alt}
                   />
                 </div>
-                <div className="overlay d-flex direction-column absolute top-0 left-0 d-flex justify-center align-center text-bg">
+                {/* <div className="overlay d-flex direction-column absolute top-0 left-0 d-flex justify-center align-center text-bg">
                   <div className="men-overlay d-flex justify-center">
                     {category}
                   </div>
-                </div>
+                </div> */}
               </div>
             </>
           );
