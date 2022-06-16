@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./ProductCard.css";
 import { useFilter, useCart, useAuth, useAlert} from "../../context";
 import { isInCart } from "../../productUtilities";
@@ -27,7 +28,8 @@ const WishlistProduct = ({ product }) => {
     oldPrice,
     discount,
     outOfStock,
-    isFast
+    isFast,
+    itemRating
   } = product;
 
   const inCart = isInCart(cart, _id)
@@ -74,17 +76,22 @@ const WishlistProduct = ({ product }) => {
         </button>
       </div>
       <div className="card-details">
+      <Link className="link" to={`/product/${_id}`}>
         <div className="card-title">{title}</div>
         <div className="card-description">
           <p className="card-des">{productCategory}</p>
           <p className="card-price">
             Rs. {newPrice}
-            <span className="price-strike-through padding-all-8">
+            <span className="price-strike-through padding-all-8 font-light">
               Rs. {oldPrice}
             </span>
-            <span className="discount padding-all-8">({discount}% OFF)</span>
+            <span className="discount padding-all-8 font-light">({discount}% OFF)</span>
           </p>
+          <p className="d-flex align-center">{itemRating} <span class="material-icons-outlined star">
+                star
+                </span></p>
         </div>
+        </Link>
         <div className="cta-btn">
         <button 
           className={`${outOfStock ? `strik-through` : `cursor`} button btn-primary btn-icon d-flex btn-margin gap action-btn  align-center justify-center`} 
