@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./ProductCard.css";
 import { useFilter, useCart, useAuth, useAlert } from "../../context";
 import { isInwishlist, isInCart } from "../../productUtilities";
+import { set } from "lodash";
 
 const ProductCard = ({ product }) => {
 
@@ -29,7 +30,7 @@ const ProductCard = ({ product }) => {
 
   const addToCartHandler = () => {
     if (eToken){
-      addToCart(product, setAlert)
+      addToCart(product, setAlert, title, productCategory)
     }else{
       navigate("/login")
     }
@@ -43,7 +44,16 @@ const ProductCard = ({ product }) => {
 
   const addToWishlistHandler = () => {
     if (eToken){
-      addToWishlist(product, setAlert)
+      if (isWishlisted){
+        setAlert({
+          open: true,
+          message: `${title} - ${productCategory} Is Already In Wishlist`,
+          type: "info"
+        })
+      }else{
+        addToWishlist(product, setAlert, title, productCategory)
+      }
+      
     }else{
       navigate("/login")
     }

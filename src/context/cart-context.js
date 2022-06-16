@@ -14,7 +14,7 @@ const CartProvider = ({ children }) => {
   });
   const [userCart, setUserCart] = useState([]);
 
-  const addToCart = async (product, setAlert) => {
+  const addToCart = async (product, setAlert, title, productCategory) => {
     try {
       const {data: {cart}} = await axios.post("/api/user/cart", {product},
       {
@@ -28,7 +28,7 @@ const CartProvider = ({ children }) => {
         })
         setAlert({
           open: true,
-          message: "Item Added To Cart",
+          message: `${title} - ${productCategory} Added To Cart`,
           type: "success"
         })
       
@@ -41,7 +41,7 @@ const CartProvider = ({ children }) => {
     }
   }
 
-  const removeFromCart = async (product, setAlert) => {
+  const removeFromCart = async (product, setAlert, title, productCategory) => {
     try {
       const {data: {cart}} = await axios.delete(`api/user/cart/${product._id}`, 
       {headers : {authorization : localStorage.getItem("token")}})
@@ -52,7 +52,7 @@ const CartProvider = ({ children }) => {
       })
       setAlert({
         open: true,
-        message: "Item Removed From Cart",
+        message: `${title} - ${productCategory}  Removed From Cart`,
         type: "success"
       })
     }catch(err){

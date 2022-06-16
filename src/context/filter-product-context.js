@@ -16,7 +16,7 @@ const FilterProvider = ({ children }) => {
     searchInput: ""
   });
 
-  const addToWishlist = async (product, setAlert) => {
+  const addToWishlist = async (product, setAlert, title, productCategory) => {
     try {
       const {data: {wishlist}} = await axios.post("/api/user/wishlist", {product}, {
         headers: {authorization: localStorage.getItem("token")}
@@ -28,7 +28,7 @@ const FilterProvider = ({ children }) => {
         })
         setAlert({
           open: true,
-          message: "Item Added To Wishlist",
+          message: `${title} - ${productCategory} Added To Wishlist`,
           type: "success"
         })
     }catch(err){

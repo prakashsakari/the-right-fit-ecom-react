@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./ProductCardHorizontal.css";
 import { useFilter, useCart, useAuth, useAlert } from "../../context";
 import { isInwishlist } from "../../productUtilities";
@@ -16,13 +17,13 @@ export const ProductCardHorizontal = ({ product }) => {
 
   const removeFromCartHandler = () => {
     if (eToken){
-      removeFromCart(product, setAlert)
+      removeFromCart(product, setAlert, title, productCategory)
     }
   }
 
   const moveToWishlistHandler = () => {
     if (eToken){
-      addToWishlist(product, setAlert)
+      addToWishlist(product, setAlert, title, productCategory)
       removeFromCart(product)
     }
   }
@@ -36,6 +37,7 @@ export const ProductCardHorizontal = ({ product }) => {
   return (
     <div className="card-horizontal d-flex shadow card-size flex-start">
       <div className="card-hori-image-container card-size-hori relative">
+      <Link className="link" to={`/product/${_id}`}>
         <img className="card-image-hori d-block" src={imgUrl} alt="shoes" />
         {isTrending && (
           <small className="c-badge bg-primary absolute left-0 top-2">
@@ -47,6 +49,7 @@ export const ProductCardHorizontal = ({ product }) => {
             Express Delivery
           </small>
         )}
+        </Link>
       </div>
       <div className="card-details horizontal-card d-flex direction-column">
         <div className="card-title">{title}</div>

@@ -8,6 +8,7 @@ export const ProductDetails = ({ sproduct }) => {
     _id,
     imgUrl,
     title,
+    productCategory,
     description,
     newPrice,
     oldPrice,
@@ -37,7 +38,7 @@ export const ProductDetails = ({ sproduct }) => {
 
   const addToCartHandler = () => {
     if (eToken){
-      addToCart(sproduct, setAlert)
+      addToCart(sproduct, setAlert, title, productCategory)
     }else{
       navigate("/login")
     }
@@ -49,7 +50,16 @@ export const ProductDetails = ({ sproduct }) => {
 
   const addToWishlistHandler = () => {
     if (eToken){
-      addToWishlist(sproduct, setAlert)
+      if (isWishlisted){
+        setAlert({
+          open: true,
+          message: `${title} - ${productCategory} Is Already In Wishlist`,
+          type: "info"
+        })
+      }else{
+        addToWishlist(sproduct, setAlert, title, productCategory)
+      }
+      
     }else{
       navigate("/login")
     }
@@ -110,7 +120,6 @@ export const ProductDetails = ({ sproduct }) => {
           </button>
           <button
               className="button btn-outline-primary btn-icon d-flex align-center gap cursor btn-margin"
-              disabled={isWishlisted}
               onClick={addToWishlistHandler}
               
             >
