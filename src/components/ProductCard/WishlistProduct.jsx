@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ProductCard.css";
 import { useFilter, useCart, useAuth, useAlert} from "../../context";
 import { isInCart } from "../../productUtilities";
 
 
 const WishlistProduct = ({ product }) => {
+
+  const navigate = useNavigate();
+
   const {
     removeFromWishlist
   } = useFilter();
@@ -48,9 +51,9 @@ const WishlistProduct = ({ product }) => {
     }
   }
 
-  const removeFromCartHandler = () => {
+  const goToCart = () => {
     if(eToken){
-      removeFromCart(product, setAlert)
+      navigate("/cart")
     }
   }
 
@@ -96,12 +99,14 @@ const WishlistProduct = ({ product }) => {
         <button 
           className={`${outOfStock ? `strik-through` : `cursor`} button btn-primary btn-icon d-flex btn-margin gap action-btn  align-center justify-center`} 
           disabled={outOfStock}
-          onClick={inCart ? removeFromCartHandler : addToCartHandler}
+          onClick={inCart ? goToCart : addToCartHandler}
           >
-            <img src={inCart ? "https://uilight.netlify.app/assets/delete.png" : "https://therightfit.netlify.app/assets/cart-white.png"} 
-                 alt={inCart ? "delete" : "cart"} 
-            />
-            {inCart && !outOfStock ? "Remove From Cart" : !inCart && !outOfStock ? "Add to Cart" : outOfStock ? "Out of Stock" : ""}
+            {inCart ? <span class="material-icons-outlined">
+                        shopping_cart_checkout
+                      </span> : <span class="material-icons-outlined">
+                          shopping_cart
+                      </span>}
+            {inCart && !outOfStock ? "Go To Cart" : !inCart && !outOfStock ? "Add to Cart" : outOfStock ? "Out of Stock" : ""}
           </button>
         </div>
       </div>
