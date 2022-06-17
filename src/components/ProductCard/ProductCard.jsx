@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
 
   const {
     cartState: { cart },
-    addToCart, removeFromCart
+    addToCart,
   } = useCart();
 
   const { eToken } = useAuth();
