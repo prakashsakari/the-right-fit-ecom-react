@@ -77,8 +77,8 @@ const Products = () => {
         <main className="product-content d-flex gap-48px wrap">
           {filterBySearch.length > 0 ? (filterBySearch.map((product) => (
             <ProductCard product={product} key={product.id} />
-          ))) : <h3 className="heading-3">
-          No products found matching the search result. Try something else{" "}
+          ))) : <h3 className="heading-3 fallback d-flex align-center justify-center">
+          No products found. Try something else{" "}
           
         </h3>}
         </main>
